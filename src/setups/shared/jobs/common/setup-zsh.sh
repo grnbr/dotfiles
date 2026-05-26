@@ -30,4 +30,4 @@ fi
 chsh -s "$(which zsh)"
 
 rm -f ~/.zshrc
-ln -sf "$ROOT_DIR/src/shell/.zshrc" ~/.zshrc
+ln -sf "$ROOT_DIR/src/shell/zshrc" ~/.zshrc
