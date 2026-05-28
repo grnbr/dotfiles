@@ -9,8 +9,6 @@ alias ut7='sudo umount /dev/disk/by-id/usb-Samsung_PSSD_T7_Touch_S5KENJ0TB00202E
 
 alias ten="trans :ru"
 alias тру="trans ru:en"
-alias stvpn="sudo systemctl start sing-box"
-alias rvpn="sudo systemctl restart sing-box"
 alias brin='setsid brave-browser --incognito >/dev/null 2>&1 &'
 alias frin='setsid firefox --private-window >/dev/null 2>&1 &'
 alias gin='setsid google-chrome --incognito >/dev/null 2>&1 &'

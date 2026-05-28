@@ -42,8 +42,3 @@ alias gl="git log --oneline --graph --decorate --all"
 alias gd="git diff"
 alias gds="git diff --staged"
 
-########## Pnpm ##########
-alias dev="pnpm dev"
-alias lint="pnpm lint"
-alias gena="pnpm generate:api"
-alias stylelint="pnpm stylelint"

@@ -9,6 +9,7 @@ system=(
   darkman
   wl-clipboard
   fd
+  unzip
 )
 
 # ── shell / cli ────────────────────────
@@ -65,6 +66,7 @@ files=(
 # ── dev ────────────────────────────────
 dev=(
   nodejs
+  npm
   postgresql
   ffmpeg
   iperf3
