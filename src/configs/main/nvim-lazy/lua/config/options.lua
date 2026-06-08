@@ -9,3 +9,8 @@ vim.opt.breakindent = true
 vim.opt.clipboard = "unnamedplus"
 vim.g.autoformat = true
 vim.opt.shell = "/bin/zsh"
+
+vim.o.autoread = true
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
+  command = "checktime",
+})

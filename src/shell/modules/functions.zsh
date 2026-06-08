@@ -12,3 +12,4 @@ lst() {
     ls -lhtA "$dir" | head -n "$lines"
 }
 
+ calc() { echo "$*" | bc -l; }
