@@ -33,6 +33,12 @@ vim.keymap.set("n", "<leader>ya", ":%y+<CR>", { desc = "Yank all" })
 vim.keymap.set("n", "<leader>yf", function()
   vim.fn.setreg("+", vim.fn.expand("%:t"))
 end, { desc = "Yank filename" })
+vim.keymap.set("n", "<leader>y%", function()
+  vim.fn.setreg("+", vim.fn.expand("%"))
+end, { desc = "Yank relative path" })
+vim.keymap.set("n", "<leader>yp", function()
+  vim.fn.setreg("+", vim.fn.expand("%:p"))
+end, { desc = "Yank full path" })
 
 vim.keymap.set({ "n" }, "p", '""p')
 vim.keymap.set({ "n" }, "P", '""P')
@@ -121,3 +127,32 @@ vim.keymap.set("n", "<leader>bZ", function()
     end
   end
 end, { desc = "Pin all buffers" })
+
+local function wrap_wincmd(dir, wrap_dir)
+  local cur = vim.api.nvim_get_current_win()
+  vim.cmd("wincmd " .. dir)
+  if vim.api.nvim_get_current_win() == cur then
+    while true do
+      vim.cmd("wincmd " .. wrap_dir)
+      local w = vim.api.nvim_get_current_win()
+      vim.cmd("wincmd " .. wrap_dir)
+      if vim.api.nvim_get_current_win() == w then
+        break
+      end
+      vim.api.nvim_set_current_win(w)
+    end
+  end
+end
+
+map("n", "<C-h>", function()
+  wrap_wincmd("h", "l")
+end)
+map("n", "<C-j>", function()
+  wrap_wincmd("j", "k")
+end)
+map("n", "<C-k>", function()
+  wrap_wincmd("k", "j")
+end)
+map("n", "<C-l>", function()
+  wrap_wincmd("l", "h")
+end)

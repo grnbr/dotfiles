@@ -15,9 +15,15 @@ return {
   {
     "jsongerber/nvim-px-to-rem",
     config = true,
-    --If you need to set some options replace the line above with:
-    -- config = function()
-    --     require('nvim-px-to-rem').setup()
-    -- end,
+  },
+  {
+    "ahmedkhalf/project.nvim",
+    config = function()
+      require("project_nvim").setup({
+        manual_mode = false,
+        detection_methods = { "pattern" }, -- remove lsp
+        patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile" },
+      })
+    end,
   },
 }
