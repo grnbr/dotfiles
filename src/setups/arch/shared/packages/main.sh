@@ -12,6 +12,10 @@ system=(
   unzip
 )
 
+tool=(
+  inotify-tools
+)
+
 # ── shell / cli ────────────────────────
 cli=(
   neovim
@@ -83,6 +87,7 @@ misc=(
 # ── merge all arrays ───────────────────
 main_packages=(
   "${system[@]}"
+  "${tool[@]}"
   "${cli[@]}"
   "${terminal[@]}"
   "${audio[@]}"

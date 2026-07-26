@@ -4,4 +4,5 @@ export EDITOR=nvim
 export VISUAL=nvim
 export SUDO_EDITOR=nvim
 
-
+export RESTIC_REPOSITORY=/mnt/t7/backup/restic-repo
+# export RESTIC_PASSWORD=some-strong-password

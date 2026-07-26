@@ -5,6 +5,8 @@ alias cl='clear'
 alias wl='wl-copy'
 alias pwdc="pwd | wl-copy"
 alias free='free -h'
+
+alias mt7='sudo mkdir -p /mnt/external/t7 && sudo mount -t ext4 /dev/disk/by-id/usb-Samsung_PSSD_T7_Touch_S5KENJ0TB00202E-0:0-part1 /mnt/external/t7 && echo "T7 Touch safely mounted."'
 alias ut7='sudo umount /dev/disk/by-id/usb-Samsung_PSSD_T7_Touch_S5KENJ0TB00202E-0:0-part1 && echo "T7 Touch safely unmounted."'
 
 alias ten="trans :ru"
@@ -16,7 +18,8 @@ alias lv='NVIM_APPNAME=nvim-lazy nvim'
 alias ni='NVIM_APPNAME=nvim-ide nvim'
 alias kv='NVIM_APPNAME=nvim-kickstarter nvim'
 alias vi='nvim'
+alias prvzsh='HISTFILE=/dev/null HISTSIZE=0 SAVEHIST=0 zsh'
 
 alias gcl="wl-copy < /mnt/linuxdisk/my-stuff/programming/jobs/cover-letter.txt"
 alias gclen="wl-copy < /mnt/linuxdisk/my-stuff/programming/jobs/cover-letter-en.txt"
-alias opfls='~/.local/bin/open_folders.sh'
+alias opfls='~/.bin/open_folders.sh'

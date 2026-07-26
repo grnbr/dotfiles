@@ -1,16 +1,11 @@
-#!/bin/bash
-set -e
-
 # ── system ─────────────────────────────
 system=(
   git
   polkit
-  polkit-gnome
-  man-db
-  man-pages
-  xdg-utils
+  polkit-kde
   gvfs
-  darkman # ⚠️ NOT in official Fedora repos (likely COPR/AUR equivalent)
+  greetd
+  greetd-tuigreet
 )
 
 # ── shell / cli ────────────────────────
@@ -21,39 +16,41 @@ cli=(
   fzf
   zsh
   fastfetch
-  openbsd-netcat
-)
-
-# ── audio ──────────────────────────────
-audio=(
-  pipewire
-  pipewire-alsa
-  pipewire-pulseaudio # ⚠ Fedora uses pipewire-pulseaudio (NOT pipewire-pulse)
-  wireplumber
+  nmap-ncat
+  yt-dlp
 )
 
 # ── apps ───────────────────────────────
 apps=(
+  firefox
   qbittorrent
   libreoffice
   mpv
   calibre
-  cmus
   loupe
+  rhythmbox
+)
+
+music=(
+  mpd
+  mpc
+  ncmpcpp
 )
 
 # ── file management ────────────────────
 files=(
   nautilus
+  thunar
 )
 
 # ── dev ────────────────────────────────
 dev=(
   nodejs
+  npm
   postgresql
   ffmpeg
   iperf3
-  perl-Image-ExifTool # ⚠ Fedora package name differs
+  perl-Image-ExifTool
   rust
 )
 
@@ -61,6 +58,8 @@ dev=(
 misc=(
   xdg-user-dirs
   xdg-desktop-portal
+  darkman
+  inotify-tools
 )
 
 # ── merge all arrays ───────────────────
@@ -68,10 +67,9 @@ main_packages=(
   "${system[@]}"
   "${cli[@]}"
   "${audio[@]}"
+  "${music[@]}"
   "${apps[@]}"
   "${files[@]}"
   "${dev[@]}"
   "${misc[@]}"
 )
-
-sudo dnf install -y "${main_packages[@]}"

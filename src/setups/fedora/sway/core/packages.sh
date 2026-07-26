@@ -1,7 +1,13 @@
 #!/bin/bash
 set -e
 
-ROOT_DIR="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
+CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT_DIR="$(git -C "$(dirname "${BASH_SOURCE[0]}")" rev-parse --show-toplevel 2>/dev/null)" || {
+  echo "ERROR: not inside a git repo"
+  exit 1
+}
+
+source "$ROOT_DIR/src/setups/fedora/shared/packages/main.sh"
 
 sway=(
   sway
@@ -10,28 +16,30 @@ sway=(
   swayidle
 )
 
-# ── terminal ───────────────────────────
-terminal=(
-  kitty
-)
-
 # ── wm / ui ────────────────────────────
 ui=(
   waybar
-  wofi
+  rofi
+  dunst
 )
 
 # ── wayland utils ──────────────────────
 wayland=(
   grim
   slurp
+
+  xdg-desktop-portal-wlr
+  gtk3
+  gtk4
+  qt5-qtwayland
+  qt6-qtwayland
 )
 
-sway_packages=(
+packages=(
+  "${main_packages[@]}"
   "${sway[@]}"
   "${wayland[@]}"
-  "${terminal[@]}"
   "${ui[@]}"
 )
 
-sudo dnf install -y "${sway_packages[@]}"
+sudo dnf install -y "${packages[@]}"
