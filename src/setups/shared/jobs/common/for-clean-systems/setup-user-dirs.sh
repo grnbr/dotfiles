@@ -1,8 +1,6 @@
 #!/bin/bash
 set -e
 
-ROOT_DIR="$(git -C "$(dirname "${BASH_SOURCE[0]}")" rev-parse --show-toplevel)"
-
 source "$ROOT_DIR/src/setups/shared/utils/warn.sh"
 source "$ROOT_DIR/src/setups/shared/jobs/apply-config.sh"
 

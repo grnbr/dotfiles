@@ -2,8 +2,6 @@
 set -e
 shopt -s nullglob
 
-ROOT_DIR="$(git -C "$(dirname "${BASH_SOURCE[0]}")" rev-parse --show-toplevel)"
-
 apply_config() {
   local config_name="$1"
   local path="$ROOT_DIR/src/configs/$config_name"

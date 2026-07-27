@@ -1,7 +1,5 @@
 #!/bin/bash
 
-ROOT_DIR="$(git -C "$(dirname "${BASH_SOURCE[0]}")" rev-parse --show-toplevel)"
-
 # Install Oh My Zsh (unattended so script continues)
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
@@ -15,6 +13,10 @@ if [ -f /etc/os-release ]; then
   case "$ID" in
   arch)
     sudo pacman -S --noconfirm starship
+    ;;
+  fedora)
+    sudo dnf copr enable -y atim/starship
+    sudo dnf install -y starship
     ;;
   debian | ubuntu)
     sudo apt install -y starship

@@ -47,8 +47,7 @@ _link_systemd() {
 }
 
 apply_configs() {
-  local ROOT_DIR MAIN OPTIONAL SYSTEMD DEST
-  ROOT_DIR="$(git -C "$(dirname "${BASH_SOURCE[0]}")" rev-parse --show-toplevel)"
+  local MAIN OPTIONAL SYSTEMD DEST
   MAIN="$ROOT_DIR/src/configs/main"
   OPTIONAL="$ROOT_DIR/src/configs/optional"
   SYSTEMD="$ROOT_DIR/src/configs/systemd/user"
