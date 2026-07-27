@@ -4,8 +4,6 @@ system=(
   polkit
   polkit-kde
   gvfs
-  greetd
-  greetd-tuigreet
 )
 
 # ── shell / cli ────────────────────────

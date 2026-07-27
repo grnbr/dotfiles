@@ -14,6 +14,9 @@ sway=(
   swaybg
   swaylock
   swayidle
+
+  sddm
+  sddm-wayland-sway
 )
 
 # ── wm / ui ────────────────────────────
