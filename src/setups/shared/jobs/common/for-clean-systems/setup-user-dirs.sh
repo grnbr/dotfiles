@@ -15,3 +15,5 @@ else
   warn "xdg-user-dirs-update not found, skipping"
 fi
 echo "[dirs] done"
+
+rmdir Desktop Documents Downloads Music Pictures Templates Videos Public 2>/dev/null

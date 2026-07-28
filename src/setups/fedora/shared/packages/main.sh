@@ -2,8 +2,10 @@
 system=(
   git
   polkit
-  polkit-kde
   gvfs
+  fd
+  fd-find
+  tar
 )
 
 # ── shell / cli ────────────────────────

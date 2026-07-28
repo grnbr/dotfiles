@@ -9,6 +9,9 @@ sway=(
   swaylock
   swayidle
 
+  kitty
+
+  polkit-kde
   sddm
   sddm-wayland-sway
 )
