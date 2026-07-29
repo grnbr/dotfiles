@@ -4,3 +4,4 @@ lazy-lock.json
 
 src/configs/main/mpd/*
 !src/configs/main/mpd/mpd.conf
+!src/configs/main/mpd/scripts
