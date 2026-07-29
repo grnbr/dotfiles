@@ -11,7 +11,8 @@ sway=(
 
   kitty
 
-  polkit-kde
+  xfce-polkit
+
   sddm
   sddm-wayland-sway
 )

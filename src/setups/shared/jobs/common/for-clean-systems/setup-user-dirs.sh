@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
 
-source "$ROOT_DIR/src/setups/shared/utils/warn.sh"
 source "$ROOT_DIR/src/setups/shared/jobs/apply-config.sh"
 
 echo "[dirs] setting up user dirs..."

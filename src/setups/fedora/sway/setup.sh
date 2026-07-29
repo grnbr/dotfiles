@@ -12,10 +12,15 @@ export ROOT_DIR
 readonly ROOT_DIR
 
 SHARED_DIR="$ROOT_DIR/src/setups/shared"
+readonly SHARED_DIR
 
-source "$SHARED_DIR/utils/keep-sudo.sh"
-source "$SHARED_DIR/utils/warn.sh"
-source "$SHARED_DIR/utils/output-result.sh"
+UTILS_DIR="$SHARED_DIR/utils"
+readonly UTILS_DIR
+export UTILS_DIR
+
+source "$UTILS_DIR/keep-sudo.sh"
+source "$UTILS_DIR/warn.sh"
+source "$UTILS_DIR/output-result.sh"
 keep_sudo
 output_result
 
