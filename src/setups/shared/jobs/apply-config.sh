@@ -1,10 +1,11 @@
 #!/bin/bash
 set -e
-shopt -s nullglob
 
 apply_config() {
   local config_name="$1"
-  local path="$ROOT_DIR/src/configs/$config_name"
+  local rootdir
+  rootdir="$(git -C "$(dirname "${BASH_SOURCE[0]}")" rev-parse --show-toplevel 2>/dev/null)"
+  local path="$rootdir/src/configs/$config_name"
   local name="$(basename "$path")"
   local dest="$HOME/.config"
   local target="$dest/$name"
@@ -21,3 +22,7 @@ apply_config() {
   { [ -e "$target" ] || [ -L "$target" ]; } && rm -rf -- "$target"
   ln -s "$path" "$target"
 }
+
+if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
+  apply_config "$@"
+fi
