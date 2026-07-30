@@ -23,6 +23,7 @@ sway=(
   xdg-desktop-portal
   gtk3
   gtk4
+  adwaita-icon-theme
 )
 
 apps=(
