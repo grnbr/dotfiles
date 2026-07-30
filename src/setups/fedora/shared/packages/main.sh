@@ -1,11 +1,6 @@
 # ── system ─────────────────────────────
 system=(
   git
-  polkit
-  gvfs
-  fd
-  fd-find
-  tar
 )
 
 # ── shell / cli ────────────────────────
@@ -29,18 +24,13 @@ apps=(
   calibre
   loupe
   rhythmbox
+  thunar
 )
 
 music=(
   mpd
   mpc
   ncmpcpp
-)
-
-# ── file management ────────────────────
-files=(
-  nautilus
-  thunar
 )
 
 # ── dev ────────────────────────────────
@@ -56,8 +46,7 @@ dev=(
 
 # ── misc ───────────────────────────────
 misc=(
-  xdg-user-dirs
-  xdg-desktop-portal
+  # xdg-user-dirs
   darkman
   inotify-tools
 )
@@ -69,7 +58,6 @@ main_packages=(
   "${audio[@]}"
   "${music[@]}"
   "${apps[@]}"
-  "${files[@]}"
   "${dev[@]}"
   "${misc[@]}"
 )

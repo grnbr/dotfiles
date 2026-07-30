@@ -9,38 +9,44 @@ sway=(
   swaylock
   swayidle
 
-  kitty
-
+  gvfs
+  fd
+  fd-find
+  tar
+  polkit
   xfce-polkit
 
   sddm
   sddm-wayland-sway
-)
-
-# ── wm / ui ────────────────────────────
-ui=(
-  waybar
-  rofi
-  dunst
-)
-
-# ── wayland utils ──────────────────────
-wayland=(
-  grim
-  slurp
 
   xdg-desktop-portal-wlr
+  xdg-desktop-portal
   gtk3
   gtk4
-  qt5-qtwayland
-  qt6-qtwayland
+)
+
+apps=(
+  nautilus
+)
+
+terminal=(
+  kitty
+)
+
+utils=(
+  dunst
+  grim
+  slurp
+  waybar
+  rofi
 )
 
 packages=(
   "${main_packages[@]}"
   "${sway[@]}"
-  "${wayland[@]}"
-  "${ui[@]}"
+  "${apps[@]}"
+  "${terminal[@]}"
+  "${utils[@]}"
 )
 
 sudo dnf install -y "${packages[@]}"
