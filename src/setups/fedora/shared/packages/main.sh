@@ -13,6 +13,7 @@ cli=(
   fastfetch
   nmap-ncat
   yt-dlp
+  gdu
 )
 
 # ── apps ───────────────────────────────
