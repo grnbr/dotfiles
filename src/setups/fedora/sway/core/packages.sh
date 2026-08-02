@@ -1,53 +1,56 @@
 #!/bin/bash
 set -e
 
-source "$ROOT_DIR/src/setups/fedora/shared/packages/main.sh"
+install_sway_packages() {
+  local sway=(
+    sway
+    swaybg
+    swaylock
+    swayidle
 
-sway=(
-  sway
-  swaybg
-  swaylock
-  swayidle
+    gvfs
+    fd
+    fd-find
+    tar
+    polkit
+    xfce-polkit
 
-  gvfs
-  fd
-  fd-find
-  tar
-  polkit
-  xfce-polkit
+    sddm
+    sddm-wayland-sway
 
-  sddm
-  sddm-wayland-sway
+    xdg-desktop-portal-wlr
+    xdg-desktop-portal
+    gtk3
+    gtk4
+    adwaita-icon-theme
+  )
 
-  xdg-desktop-portal-wlr
-  xdg-desktop-portal
-  gtk3
-  gtk4
-  adwaita-icon-theme
-)
+  local apps=(
+    nautilus
+  )
 
-apps=(
-  nautilus
-)
+  local terminal=(
+    kitty
+  )
 
-terminal=(
-  kitty
-)
+  local utils=(
+    dunst
+    grim
+    slurp
+    waybar
+    rofi
+  )
 
-utils=(
-  dunst
-  grim
-  slurp
-  waybar
-  rofi
-)
+  local packages=(
+    "${sway[@]}"
+    "${apps[@]}"
+    "${terminal[@]}"
+    "${utils[@]}"
+  )
 
-packages=(
-  "${main_packages[@]}"
-  "${sway[@]}"
-  "${apps[@]}"
-  "${terminal[@]}"
-  "${utils[@]}"
-)
+  sudo dnf install -y "${packages[@]}"
+}
 
-sudo dnf install -y "${packages[@]}"
+if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
+  install_sway_packages
+fi

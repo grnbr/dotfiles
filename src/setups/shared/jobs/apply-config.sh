@@ -1,11 +1,21 @@
 #!/bin/bash
 set -e
 
+if [[ -n "${APPLY_CONFIG_LOADED:-}" ]]; then
+  return 0
+fi
+readonly APPLY_CONFIG_LOADED=1
+
 apply_config() {
   local config_name="$1"
-  local rootdir
-  rootdir="$(git -C "$(dirname "${BASH_SOURCE[0]}")" rev-parse --show-toplevel 2>/dev/null)"
-  local path="$rootdir/src/configs/$config_name"
+  local ROOT_DIR_LOCAL="${ROOT_DIR:-}"
+
+  if [[ -z "$ROOT_DIR_LOCAL" ]]; then
+    local CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+    ROOT_DIR_LOCAL="$(git -C "$CURRENT_DIR" rev-parse --show-toplevel)"
+  fi
+
+  local path="$ROOT_DIR_LOCAL/src/configs/$config_name"
   local name="$(basename "$path")"
   local dest="$HOME/.config"
   local target="$dest/$name"

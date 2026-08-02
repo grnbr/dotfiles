@@ -1,22 +1,18 @@
 #!/bin/bash
 set -e
 
-CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-readonly CURRENT_DIR
+readonly CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 ROOT_DIR="$(git -C "$CURRENT_DIR" rev-parse --show-toplevel 2>/dev/null)" || {
   echo "ERROR: not inside a git repo"
   exit 1
 }
-export ROOT_DIR
-readonly ROOT_DIR
 
-SHARED_DIR="$ROOT_DIR/src/setups/shared"
-readonly SHARED_DIR
+export readonly ROOT_DIR
 
-UTILS_DIR="$SHARED_DIR/utils"
-readonly UTILS_DIR
-export UTILS_DIR
+readonly SHARED_DIR="$ROOT_DIR/src/setups/shared"
+export readonly UTILS_DIR="$SHARED_DIR/utils"
+export readonly SHARED_JOBS_DIR="$ROOT_DIR/src/setups/shared/jobs"
 
 source "$UTILS_DIR/keep-sudo.sh"
 source "$UTILS_DIR/warn.sh"
@@ -28,8 +24,13 @@ echo "Updating system..."
 
 sudo dnf upgrade -y
 
-source "$CURRENT_DIR/core/packages.sh" install_sway_packages
+source "$ROOT_DIR/src/setups/fedora/shared/packages/main.sh"
+install_main_packages
 
+source "$CURRENT_DIR/core/packages.sh"
+install_sway_packages
+
+source "$SHARED_JOBS_DIR/apply-configs.sh"
 source "$CURRENT_DIR/core/configs.sh"
 configure_sway
 

@@ -3,7 +3,7 @@ local utils = require("mp.utils")
 
 local home = os.getenv("HOME")
 
-local primary = "/mnt/store/media/images/Screenshots"
+local primary = "/mnt/store/Media/Images/Screenshots"
 local pictures1 = home .. "/Pictures"
 local pictures2 = home .. "/pictures"
 

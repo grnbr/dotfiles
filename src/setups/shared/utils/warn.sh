@@ -1,3 +1,6 @@
+#!/bin/bash
+set -e
+
 readonly WARNINGS_LOG_PATH="/tmp/setup-warnings.log"
 export WARNINGS_LOG_PATH
 

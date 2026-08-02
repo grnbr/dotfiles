@@ -14,4 +14,7 @@ apply_gtk_theme() {
   gsettings set org.gnome.desktop.interface icon-theme "Adwaita"
   gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 }
-apply_gtk_theme
+
+if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
+  apply_gtk_theme
+fi

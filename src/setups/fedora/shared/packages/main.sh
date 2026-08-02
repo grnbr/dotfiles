@@ -1,64 +1,74 @@
-# ── system ─────────────────────────────
-system=(
-  git
-)
+#!/bin/bash
+set -e
 
-# ── shell / cli ────────────────────────
-cli=(
-  neovim
-  htop
-  tree
-  fzf
-  zsh
-  fastfetch
-  nmap-ncat
-  yt-dlp
-  gdu
-)
+install_main_packages() {
+  echo "==> Installing main packages..."
 
-# ── apps ───────────────────────────────
-apps=(
-  firefox
-  qbittorrent
-  libreoffice
-  mpv
-  calibre
-  loupe
-  rhythmbox
-  thunar
-)
+  local system=(
+    git
+  )
 
-music=(
-  mpd
-  mpc
-  ncmpcpp
-)
+  local cli=(
+    neovim
+    htop
+    tree
+    fzf
+    zsh
+    fastfetch
+    nmap-ncat
+    yt-dlp
+    gdu
+    translate-shell
+    dictd
+  )
 
-# ── dev ────────────────────────────────
-dev=(
-  nodejs
-  npm
-  postgresql
-  ffmpeg
-  iperf3
-  perl-Image-ExifTool
-  rust
-)
+  local apps=(
+    firefox
+    qbittorrent
+    libreoffice
+    mpv
+    calibre
+    loupe
+    rhythmbox
+    thunar
+  )
 
-# ── misc ───────────────────────────────
-misc=(
-  # xdg-user-dirs
-  darkman
-  inotify-tools
-)
+  local music=(
+    mpd
+    mpc
+    ncmpcpp
+  )
 
-# ── merge all arrays ───────────────────
-main_packages=(
-  "${system[@]}"
-  "${cli[@]}"
-  "${audio[@]}"
-  "${music[@]}"
-  "${apps[@]}"
-  "${dev[@]}"
-  "${misc[@]}"
-)
+  local dev=(
+    nodejs
+    npm
+    postgresql
+    ffmpeg
+    iperf3
+    perl-Image-ExifTool
+    rust
+  )
+
+  local misc=(
+    # xdg-user-dirs
+    darkman
+    inotify-tools
+  )
+
+  local packages=(
+    "${system[@]}"
+    "${cli[@]}"
+    "${music[@]}"
+    "${apps[@]}"
+    "${dev[@]}"
+    "${misc[@]}"
+  )
+
+  sudo dnf install -y "${packages[@]}"
+}
+
+install_main_packages
+
+if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
+  install_main_packages
+fi

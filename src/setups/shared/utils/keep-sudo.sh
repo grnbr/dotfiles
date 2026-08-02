@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 keep_sudo() {
   sudo -v

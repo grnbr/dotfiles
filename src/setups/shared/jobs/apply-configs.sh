@@ -1,8 +1,15 @@
 #!/bin/bash
 set -e
 
+if [[ -n "${APPLY_CONFIGS_LOADED:-}" ]]; then
+  return 0
+fi
+readonly APPLY_CONFIGS_LOADED=1
+
 _link_main() {
   local main="$1" dest="$2"
+  local name target
+
   for item in "$main"/*; do
     name="$(basename "$item")"
     [[ "$name" == "systemd" ]] && continue
@@ -18,6 +25,8 @@ _link_main() {
 
 _link_optional() {
   local optional="$1" dest="$2"
+  local name target
+
   shift 2
   for name in "$@"; do
     [ -n "$name" ] || {
@@ -37,20 +46,36 @@ _link_optional() {
 
 _link_systemd() {
   local systemd="$1"
+  local name
+
+  mkdir -p "$HOME/.config/systemd/user"
+
+  shopt -s nullglob
+
   for f in "$systemd"/*.{service,timer}; do
     echo "$f"
     name="$(basename "$f")"
     ln -sf "$f" "$HOME/.config/systemd/user/$name"
     echo "Linked systemd: $name"
   done
+
+  shopt -u nullglob
+
   systemctl --user daemon-reload
 }
 
 apply_configs() {
   local MAIN OPTIONAL SYSTEMD DEST
-  MAIN="$ROOT_DIR/src/configs/main"
-  OPTIONAL="$ROOT_DIR/src/configs/optional"
-  SYSTEMD="$ROOT_DIR/src/configs/systemd/user"
+  local ROOT_DIR_LOCAL="${ROOT_DIR:-}"
+
+  if [[ -z "$ROOT_DIR_LOCAL" ]]; then
+    local CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+    ROOT_DIR_LOCAL="$(git -C "$CURRENT_DIR" rev-parse --show-toplevel)"
+  fi
+
+  MAIN="$ROOT_DIR_LOCAL/src/configs/main"
+  OPTIONAL="$ROOT_DIR_LOCAL/src/configs/optional"
+  SYSTEMD="$ROOT_DIR_LOCAL/src/configs/systemd/user"
   DEST="$HOME/.config"
 
   mkdir -p "$DEST"
@@ -60,3 +85,7 @@ apply_configs() {
   _link_optional "$OPTIONAL" "$DEST" "$@"
   _link_systemd "$SYSTEMD"
 }
+
+if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
+  apply-configs "$@"
+fi

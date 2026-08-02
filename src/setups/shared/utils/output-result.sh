@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 output_result() {
   [[ -n "${LOG:-}" ]] && return 0 # already logging

@@ -27,6 +27,10 @@ set $rofi_cmd rofi \
 # TODO: add window with the next release of rofi-wayland
 set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
 
+bar {
+    swaybar_command waybar
+}
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
