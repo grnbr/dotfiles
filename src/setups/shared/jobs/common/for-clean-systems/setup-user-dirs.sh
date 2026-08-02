@@ -32,7 +32,7 @@ setup_user_dirs() {
   fi
 
   xdg-user-dirs-update
-  rmdir Desktop Documents Downloads Music Pictures Templates Videos Public 2>/dev/null
+  rmdir --ignore-fail-on-non-empty ~/Desktop ~/Documents ~/Downloads ~/Music ~/Pictures ~/Templates ~/Videos ~/Public 2>/dev/null || true
   echo "[dirs] done"
 }
 if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
