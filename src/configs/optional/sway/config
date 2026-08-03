@@ -216,8 +216,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 for_window [app_id=".*"] opacity 0.96
-gaps inner 10
-gaps outer 5
+# gaps inner 10
+# gaps outer 5
 
 client.focused #83c092 #83c092 #2d353b #a7c080
 client.unfocused #374247 #374247 #d3c6aa #374247
