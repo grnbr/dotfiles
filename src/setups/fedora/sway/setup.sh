@@ -20,6 +20,8 @@ source "$UTILS_DIR/output-result.sh"
 keep_sudo
 output_result
 
+sudo dnf config-manager disable fedora-cisco-openh264
+
 echo "Updating system..."
 
 sudo dnf upgrade -y
@@ -46,6 +48,8 @@ for job in "$JOBS_DIR"/*.sh; do
   echo "→ Running job $job"
   bash "$job"
 done
+
+sudo dnf config-manager enable fedora-cisco-openh264
 
 echo "All done! Reboot recommended."
 
