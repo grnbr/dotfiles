@@ -7,12 +7,17 @@ ROOT_DIR="$(git -C "$CURRENT_DIR" rev-parse --show-toplevel 2>/dev/null)" || {
   echo "ERROR: not inside a git repo"
   exit 1
 }
-
-export readonly ROOT_DIR
+readonly ROOT_DIR
+export ROOT_DIR
 
 readonly SHARED_DIR="$ROOT_DIR/src/setups/shared"
-export readonly UTILS_DIR="$SHARED_DIR/utils"
-export readonly SHARED_JOBS_DIR="$ROOT_DIR/src/setups/shared/jobs"
+export SHARED_DIR
+
+readonly UTILS_DIR="$SHARED_DIR/utils"
+export UTILS_DIR
+
+readonly SHARED_JOBS_DIR="$ROOT_DIR/src/setups/shared/jobs"
+export SHARED_JOBS_DIR
 
 source "$UTILS_DIR/keep-sudo.sh"
 source "$UTILS_DIR/warn.sh"

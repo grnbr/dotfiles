@@ -1,8 +1,9 @@
 #!/bin/bash
 set -e
 
-setup_ssh() {
-  local readonly CONF="/etc/ssh/sshd_config.d/20-deny_root.conf"
+harden_ssh() {
+  local CONF="/etc/ssh/sshd_config.d/20-deny_root.conf"
+  readonly CONF
 
   sudo mkdir -p /etc/ssh/sshd_config.d
 
@@ -13,9 +14,8 @@ setup_ssh() {
   else
     echo "SSH already hardened, skipping."
   fi
-
 }
 
 if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
-  setup_ssh
+  harden_ssh
 fi
