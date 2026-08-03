@@ -23,6 +23,7 @@ install_sway_packages() {
     gtk3
     gtk4
     adwaita-icon-theme
+    adwaita-cursor-theme
   )
 
   local apps=(

@@ -74,6 +74,9 @@ input * {
 	repeat_rate 30
 } 
 
+### Cursor
+seat seat0 xcursor_theme Adwaita 24
+
 ### Key bindings
 #
 # Basics:
@@ -222,7 +225,7 @@ client.urgent #e67e80 #e67e80 #ffffff #e67e80
 
 bindsym $mod+Shift+s exec grim ~/pictures/$(date +%F_%T).png
 
-exec /usr/libexec/xfce-polkit
+# exec /usr/libexec/xfce-polkit
 for_window [app_id="xfce-polkit"] floating enable
 
 # Include configs from 3 locations:

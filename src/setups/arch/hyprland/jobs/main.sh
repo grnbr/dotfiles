@@ -20,7 +20,6 @@ for job in "$SHARED_JOBS_DIR/common/for-clean-systems"/*.sh; do
   echo "=> Running $job"
   bash "$job"
 done
-
 for job in "$SHARED_ARCH_JOBS_DIR/common"/*.sh; do
   [ -e "$job" ] || continue
   echo "=> Running $job"
