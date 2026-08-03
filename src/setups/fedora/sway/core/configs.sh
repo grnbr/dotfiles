@@ -5,6 +5,8 @@ configure_sway() {
   local extra_configs=(
     kitty
     sway
+    gtk-3.0
+    gtk-4.0
   )
 
   echo "Apply main configs..."

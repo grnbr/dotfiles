@@ -87,5 +87,5 @@ apply_configs() {
 }
 
 if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
-  apply-configs "$@"
+  apply_configs "$@"
 fi
