@@ -3,7 +3,8 @@
 Things to install manually after running setup.sh:
 
 ## Install
-Brave, Chrome
+Brave, Chrome, Steam
+Flatpak(setup flathub): BitWarden, Discord
 
 ## mpc update
 

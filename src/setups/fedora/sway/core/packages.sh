@@ -27,7 +27,20 @@ install_sway_packages() {
   )
 
   local apps=(
+    firefox
     nautilus
+    calibre
+    loupe
+    rhythmbox
+    libreoffice
+    flatpak
+    evince
+    chromium
+  )
+
+  local cli=(
+    nmap-ncat
+    htop
   )
 
   local terminal=(
@@ -45,6 +58,7 @@ install_sway_packages() {
   local packages=(
     "${sway[@]}"
     "${apps[@]}"
+    "${cli[@]}"
     "${terminal[@]}"
     "${utils[@]}"
   )

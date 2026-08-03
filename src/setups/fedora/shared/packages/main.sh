@@ -10,12 +10,10 @@ install_main_packages() {
 
   local cli=(
     neovim
-    htop
     tree
     fzf
     zsh
     fastfetch
-    nmap-ncat
     yt-dlp
     gdu
     translate-shell
@@ -23,13 +21,8 @@ install_main_packages() {
   )
 
   local apps=(
-    firefox
     qbittorrent
-    libreoffice
     mpv
-    calibre
-    loupe
-    rhythmbox
     thunar
   )
 
