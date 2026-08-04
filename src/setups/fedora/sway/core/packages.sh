@@ -36,6 +36,8 @@ install_sway_packages() {
     flatpak
     evince
     chromium
+    gnome-calculator
+    gnome-sound-recorder
   )
 
   local cli=(

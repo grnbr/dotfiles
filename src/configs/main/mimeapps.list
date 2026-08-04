@@ -1,0 +1,26 @@
+[Default Applications]
+application/json=nvim.desktop
+video/mp4=mpv.desktop
+video/webm=mpv.desktop
+audio/mpeg=org.gnome.Rhythmbox3.desktop
+video/quicktime=mpv.desktop
+text/plain=nvim.desktop
+video/x-matroska=mpv.desktop
+x-scheme-handler/viber=viber.desktop
+text/markdown=nvim.desktop
+video/vnd.avi=mpv.desktop
+x-content/image-dcf=org.gnome.gThumb.Import.desktop
+x-scheme-handler/bruno=bruno.desktop
+x-scheme-handler/jetbrains=jetbrainsd.desktop
+
+[Added Associations]
+application/json=nvim.desktop;
+video/mp4=org.videolan.vlc.desktop;org.gnome.Totem.desktop;org.videolan.VLC.desktop;mpv.desktop;info.smplayer.SMPlayer.desktop;
+video/webm=mpv.desktop;
+audio/mpeg=mpv.desktop;org.gnome.Rhythmbox3.desktop;
+video/quicktime=org.gnome.Totem.desktop;org.videolan.vlc.desktop;mpv.desktop;
+text/plain=nvim.desktop;
+video/x-matroska=org.videolan.vlc.desktop;mpv.desktop;
+text/markdown=nvim.desktop;
+video/vnd.avi=mpv.desktop;
+x-content/image-dcf=org.gnome.gThumb.Import.desktop;
