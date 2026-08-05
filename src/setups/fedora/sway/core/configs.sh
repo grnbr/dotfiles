@@ -7,6 +7,9 @@ configure_sway() {
     sway
     gtk-3.0
     gtk-4.0
+    waybar
+    environment.d
+    dunst
   )
 
   echo "Apply main configs..."

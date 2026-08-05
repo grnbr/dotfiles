@@ -1,0 +1,3 @@
+[pomodoro]
+    appname = "waybar-module-pomodoro"
+    timeout = 0

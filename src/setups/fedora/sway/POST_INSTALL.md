@@ -3,8 +3,8 @@
 Things to install manually after running setup.sh:
 
 ## Install
-Brave, Chrome, Steam
-Flatpak(setup flathub): BitWarden, Discord
+Brave, Steam
+Flatpak(setup flathub): BitWarden, Discord, Focus Timer
 
 ## mpc update
 

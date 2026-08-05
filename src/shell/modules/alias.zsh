@@ -14,7 +14,7 @@ alias ten="trans :ru"
 alias тру="trans ru:en"
 alias brin='setsid brave-browser --incognito >/dev/null 2>&1 &'
 alias frin='setsid firefox --private-window >/dev/null 2>&1 &'
-alias gin='setsid google-chrome --incognito >/dev/null 2>&1 &'
+alias gin='setsid chromium-browser --incognito >/dev/null 2>&1 &'
 alias lv='NVIM_APPNAME=nvim-lazy nvim'
 alias ni='NVIM_APPNAME=nvim-ide nvim'
 alias kv='NVIM_APPNAME=nvim-kickstarter nvim'

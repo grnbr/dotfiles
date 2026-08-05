@@ -40,6 +40,7 @@ install_main_packages() {
     iperf3
     perl-Image-ExifTool
     rust
+    cargo
   )
 
   local misc=(
