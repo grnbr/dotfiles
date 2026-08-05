@@ -29,4 +29,4 @@ if [[ -f /etc/os-release ]]; then
 fi
 
 eval "$(starship init zsh)"
-. "/home/worromot/.deno/env"
+. "$HOME/.deno/env"
