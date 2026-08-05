@@ -1,13 +1,11 @@
 #!/bin/bash
 set -e
 
-configure_sway() {
+configure_i3() {
   local extra_configs=(
     kitty
-    sway
     gtk-3.0
     gtk-4.0
-    waybar
     environment.d
     dunst
   )
@@ -17,5 +15,5 @@ configure_sway() {
 }
 
 if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
-  configure_sway
+  configure_i3
 fi
