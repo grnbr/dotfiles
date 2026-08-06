@@ -22,6 +22,7 @@ setup_singbox() {
   fi
 
   sudo dnf config-manager addrepo --from-repofile=https://sing-box.app/sing-box.repo
+  sudo systemctl enable --now sing-box
 }
 
 if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then

@@ -12,15 +12,20 @@ install_i3_packages() {
     fd
     fd-find
     tar
+
+    sddm
+
     polkit
     xfce-polkit
-    sddm
+
     xdg-desktop-portal-gtk
     xdg-desktop-portal
+
     gtk3
     gtk4
     adwaita-icon-theme
     adwaita-cursor-theme
+
     xclip
     xorg-x11-server-Xorg
     xorg-x11-drv-nvidia

@@ -3,6 +3,7 @@ alias shu='read "ans?Are you sure you want to shutdown? (y/N) " && [[ $ans == [Y
 alias reb='read "ans?Are you sure you want to reboot? (y/N) " && [[ $ans == [Yy] ]] && reboot'
 alias cl='clear'
 alias wl='wl-copy'
+alias xcp='xclip -selection clipboard'
 alias pwdc="pwd | wl-copy"
 alias free='free -h'
 alias rmconfbak='rm -rf ~/.config.bak*'

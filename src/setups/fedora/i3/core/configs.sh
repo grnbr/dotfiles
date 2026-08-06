@@ -8,6 +8,8 @@ configure_i3() {
     gtk-4.0
     environment.d
     dunst
+    polybar
+    i3
   )
 
   echo "Apply main configs..."
