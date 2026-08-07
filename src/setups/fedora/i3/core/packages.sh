@@ -40,7 +40,6 @@ install_i3_packages() {
     libreoffice
     flatpak
     evince
-    chromium
     gnome-calculator
     gnome-sound-recorder
   )

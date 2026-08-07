@@ -182,7 +182,7 @@ seat seat0 xcursor_theme Adwaita 24
     bindsym --to-code $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym --to-code $mod+Shift+space floating toggle
+    bindsym --to-code $mod+Shift+f floating toggle
 
     # Swap focus between the tiling area and the floating area
     bindsym --to-code $mod+space focus mode_toggle
@@ -192,8 +192,8 @@ seat seat0 xcursor_theme Adwaita 24
     bindsym --to-code $mod+a focus parent
 
     # Custom
-    bindsym $mod+p       exec waybar-module-pomodoro toggle
-    bindsym $mod+Alt+p  exec waybar-module-pomodoro reset
+    bindsym --to-code $mod+p       exec waybar-module-pomodoro toggle
+    bindsym --to-code $mod+Alt+p  exec waybar-module-pomodoro reset
     # bindsym $mod+p exec gdbus call --session --dest io.github.focustimerhq.FocusTimer --object-path /io/github/focustimerhq/FocusTimer --method io.github.focustimerhq.FocusTimer.Timer.Start
     # bindsym $mod+Shift+p exec gdbus call --session --dest io.github.focustimerhq.FocusTimer --object-path /io/github/focustimerhq/FocusTimer --method io.github.focustimerhq.FocusTimer.Timer.Stop
 #

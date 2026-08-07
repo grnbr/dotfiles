@@ -24,6 +24,7 @@ install_main_packages() {
     qbittorrent
     mpv
     thunar
+    chromium
   )
 
   local music=(
