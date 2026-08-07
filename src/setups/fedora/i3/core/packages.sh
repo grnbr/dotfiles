@@ -29,6 +29,7 @@ install_i3_packages() {
     xclip
     xorg-x11-server-Xorg
     xorg-x11-drv-nvidia
+    xset
   )
   local apps=(
     firefox
