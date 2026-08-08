@@ -36,11 +36,11 @@ source "$ROOT_DIR/src/setups/fedora/shared/packages/main.sh"
 install_main_packages
 
 source "$CURRENT_DIR/core/packages.sh"
-install_i3_packages
+install_bspwm_packages
 
 source "$SHARED_JOBS_DIR/apply-configs.sh"
 source "$CURRENT_DIR/core/configs.sh"
-configure_i3
+configure_bspwm
 
 source "$CURRENT_DIR/core/services.sh"
 enable_services

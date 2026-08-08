@@ -1,9 +1,10 @@
 #!/bin/bash
 set -e
 
-install_i3_packages() {
-  local i3=(
-    i3
+install_bspwm_packages() {
+  local system=(
+    bspwm
+    sxhkd
     feh
     i3lock
     xss-lock
@@ -30,6 +31,7 @@ install_i3_packages() {
     xorg-x11-server-Xorg
     xorg-x11-drv-nvidia
     xset
+    xrandr
   )
   local apps=(
     firefox
@@ -58,7 +60,7 @@ install_i3_packages() {
     rofi
   )
   local packages=(
-    "${i3[@]}"
+    "${system[@]}"
     "${apps[@]}"
     "${cli[@]}"
     "${terminal[@]}"
@@ -68,5 +70,5 @@ install_i3_packages() {
 }
 
 if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
-  install_i3_packages
+  install_bspwm_packages
 fi

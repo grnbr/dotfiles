@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-configure_i3() {
+configure_bspwm() {
   local extra_configs=(
     kitty
     gtk-3.0
@@ -9,7 +9,8 @@ configure_i3() {
     environment.d
     dunst
     polybar
-    i3
+    bspwm
+    sxhkd
   )
 
   echo "Apply main configs..."
@@ -17,5 +18,5 @@ configure_i3() {
 }
 
 if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
-  configure_i3
+  configure_bspwm
 fi
