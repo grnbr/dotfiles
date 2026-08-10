@@ -32,6 +32,8 @@ install_bspwm_packages() {
     xorg-x11-drv-nvidia
     xset
     xrandr
+    picom
+    arandr
   )
   local apps=(
     firefox
@@ -59,12 +61,18 @@ install_bspwm_packages() {
     polybar
     rofi
   )
+  local audio=(
+    pavucontrol
+    pulseaudio-utils
+    playerctl
+  )
   local packages=(
     "${system[@]}"
     "${apps[@]}"
     "${cli[@]}"
     "${terminal[@]}"
     "${utils[@]}"
+    "${audio[@]}"
   )
   sudo dnf install -y "${packages[@]}"
 }

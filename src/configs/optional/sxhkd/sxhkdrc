@@ -29,6 +29,12 @@ super + {_,shift + }w
 super + m
 	bspc desktop -l next
 
+alt + Tab
+	bspc node -f next.local
+
+alt + shift + Tab
+	bspc node -f prev.local
+
 # send the newest marked node to the newest preselected node
 super + y
 	bspc node newest.marked.local -n newest.!automatic.local
@@ -46,11 +52,11 @@ super + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
 # set the node flags
-super + ctrl + {m,x,z}
-	bspc node -g {marked,locked,private}
+super + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
 
-super + ctrl + y
-	bspc node -s west; bspc node -g sticky=on
+# super + ctrl + y
+# 	bspc node -t floating; bspc node -g sticky=on
 #
 # focus/swap
 #
@@ -60,8 +66,8 @@ super + {_,shift + }{h,j,k,l,Left,Down,Up,Right}
 	bspc node -{f,s} {west,south,north,east,west,south,north,east}
 
 # focus the node for the given path jump
-super + {p,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
+  super + {p,b,comma,period}
+  bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous node in the current desktop
 super + {_,shift + }c
@@ -82,8 +88,16 @@ super + {o,i}
 	bspc wm -h on
 
 # focus or send to the given desktop
+# super + {_,shift + }{1-9,0}
+# 	bspc {desktop -f,node -d} '^{1-9,10}'
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+	bspc {desktop --focus,node --to-desktop} '{I,II,III,IV,V,VI,VII,VIII,IX,X}' {,--follow}
+
+super + shift + b
+	bspc desktop -F horizontal
+
+super + shift + v
+	bspc desktop -F vertical
 
 #
 # preselect
@@ -118,5 +132,23 @@ super + alt + shift + {h,j,k,l}
 	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
 # move a floating window
-super + {Left,Down,Up,Right}
-	bspc node -v {-20 0,0 20,0 -20,20 0}
+super + ctrl + shift + {h,j,k,l,Left,Down,Up,Right}
+  bspc node -v {-200 0,0 200,0 -200,200 0}
+
+XF86AudioRaiseVolume
+	pactl set-sink-volume @DEFAULT_SINK@ +2%
+
+XF86AudioLowerVolume
+	pactl set-sink-volume @DEFAULT_SINK@ -2%
+
+XF86AudioMute
+	pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+XF86AudioNext
+	playerctl next
+
+XF86AudioPrev
+	playerctl previous
+
+XF86AudioPlay
+	playerctl play-pause

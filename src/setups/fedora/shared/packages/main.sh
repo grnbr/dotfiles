@@ -18,6 +18,7 @@ install_main_packages() {
     gdu
     translate-shell
     dictd
+    bc
   )
 
   local apps=(
