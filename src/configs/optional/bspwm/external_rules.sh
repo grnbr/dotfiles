@@ -4,7 +4,7 @@ class=$2
 instance=$3
 consequences=$4
 
-floating_apps=(Xfce-polkit Gnome-calculator Xdg-desktop-portal-gtk)
+floating_apps=(Xfce-polkit gnome-calculator Xdg-desktop-portal-gtk Brave)
 
 is_floating() {
   local app
@@ -31,6 +31,7 @@ else
     echo "desktop=VIII"
     ;;
   *)
+    (sleep 0.1 && bspc node "$wid" -f) &
     echo "desktop=X"
     ;;
   esac

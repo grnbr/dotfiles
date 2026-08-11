@@ -11,6 +11,7 @@ configure_bspwm() {
     polybar
     bspwm
     sxhkd
+    picom
   )
 
   echo "Apply main configs..."
