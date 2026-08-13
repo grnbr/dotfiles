@@ -1,15 +1,21 @@
 #!/usr/bin/env bash
+[ -f "$HOME/.bspwm_displays" ] && . "$HOME/.bspwm_displays"
 
-# Terminate already running bar instances
-# If all your bars have ipc enabled, you can use
-polybar-msg cmd quit
-# Otherwise you can use the nuclear option:
-# killall -q polybar
+killall -q polybar
 
-# Launch bar1 and bar2
-echo "---" | tee -a /tmp/primary.log /tmp/secondary.log
-polybar primary 2>&1 | tee -a /tmp/primary.log &
-polybar secondary 2>&1 | tee -a /tmp/secondary.log &
+while pgrep -x polybar >/dev/null; do
+  sleep 0.1
+done
+
+is_connected() {
+  xrandr -q | grep -q "^$1 connected"
+}
+
+echo "---" | tee -a /tmp/left.log /tmp/center.log /tmp/right.log >/dev/null
+
+[ -n "$DISPLAY_LEFT" ] && is_connected "$DISPLAY_LEFT" && polybar left 2>&1 | tee -a /tmp/left.log &
+[ -n "$DISPLAY_CENTER" ] && is_connected "$DISPLAY_CENTER" && polybar center 2>&1 | tee -a /tmp/center.log &
+[ -n "$DISPLAY_RIGHT" ] && is_connected "$DISPLAY_RIGHT" && polybar right 2>&1 | tee -a /tmp/right.log &
+
 disown
-
 echo "Bars launched..."

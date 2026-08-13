@@ -9,11 +9,12 @@ setup_user_dirs() {
     ROOT_DIR_LOCAL="$(git -C "$CURRENT_DIR" rev-parse --show-toplevel)"
   fi
 
-  source "$ROOT_DIR/src/setups/shared/jobs/apply-config.sh"
+  source "$ROOT_DIR_LOCAL/src/setups/shared/jobs/apply-config.sh"
 
   echo "[dirs] setting up user dirs..."
 
-  mkdir -p ~/downloads ~/documents ~/pictures ~/music ~/videos ~/tmp
+  mkdir -p ~/Downloads ~/Documents ~/Pictures ~/Music ~/Videos ~/tmp
+  mkdir -p ~/Pictures/Screenshots
   apply_config "optional/user-dirs.dirs"
 
   if ! command -v xdg-user-dirs-update &>/dev/null; then
@@ -32,7 +33,7 @@ setup_user_dirs() {
   fi
 
   xdg-user-dirs-update
-  rmdir --ignore-fail-on-non-empty ~/Desktop ~/Documents ~/Downloads ~/Music ~/Pictures ~/Templates ~/Videos ~/Public 2>/dev/null || true
+  rmdir --ignore-fail-on-non-empty ~/desktop ~/documents ~/downloads ~/music ~/pictures ~/templates ~/videos ~/public 2>/dev/null || true
   echo "[dirs] done"
 }
 if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then

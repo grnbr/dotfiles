@@ -6,10 +6,11 @@ install_main_packages() {
 
   local system=(
     git
+    python3-pip
   )
 
   local cli=(
-    neovim
+
     tree
     fzf
     zsh
@@ -19,6 +20,7 @@ install_main_packages() {
     translate-shell
     dictd
     bc
+    task
   )
 
   local apps=(
@@ -26,6 +28,8 @@ install_main_packages() {
     mpv
     thunar
     chromium
+    qutebrowser
+    gimp
   )
 
   local music=(

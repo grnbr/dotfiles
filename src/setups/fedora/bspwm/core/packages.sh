@@ -34,6 +34,7 @@ install_bspwm_packages() {
     xrandr
     picom
     arandr
+    xev
   )
   local apps=(
     firefox
@@ -50,6 +51,7 @@ install_bspwm_packages() {
   local cli=(
     nmap-ncat
     htop
+    rsync
   )
   local terminal=(
     kitty

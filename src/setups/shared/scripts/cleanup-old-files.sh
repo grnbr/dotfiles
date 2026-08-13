@@ -1,2 +1,6 @@
 #!/bin/bash
-find ~/downloads ~/Downloads ~/tmp -maxdepth 1 -mtime +45 -type f -delete
+
+for dir in ~/downloads ~/Downloads ~/tmp; do
+  [ -d "$dir" ] || continue
+  find "$dir" -maxdepth 1 -type f -atime +45 -delete
+done

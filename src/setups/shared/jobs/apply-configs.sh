@@ -75,7 +75,7 @@ apply_configs() {
 
   MAIN="$ROOT_DIR_LOCAL/src/configs/main"
   OPTIONAL="$ROOT_DIR_LOCAL/src/configs/optional"
-  SYSTEMD="$ROOT_DIR_LOCAL/src/configs/systemd/user"
+  SYSTEMD_USER="$ROOT_DIR_LOCAL/src/configs/systemd/main/user"
   DEST="$HOME/.config"
 
   mkdir -p "$DEST"
@@ -83,7 +83,7 @@ apply_configs() {
 
   _link_main "$MAIN" "$DEST"
   _link_optional "$OPTIONAL" "$DEST" "$@"
-  _link_systemd "$SYSTEMD"
+  _link_systemd "$SYSTEMD_USER"
 }
 
 if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
