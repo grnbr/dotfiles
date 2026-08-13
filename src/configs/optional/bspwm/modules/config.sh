@@ -25,6 +25,12 @@ bspc config pointer_action1 move
 bspc config pointer_action2 resize_side
 bspc config pointer_action3 resize_corner
 
+# bspc config focus_follows_pointer true
+bspc config pointer_follows_focus true
+# bspc config pointer_follows_monitor true
+
+bspc config remove_unplugged_monitors true
+
 bspc desktop 'IV' -l monocle
 bspc desktop 'X' -l monocle
 bspc config external_rules_command ${HOME}/.config/bspwm/external_rules.sh

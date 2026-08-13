@@ -31,8 +31,7 @@ else
     echo "desktop=VIII"
     ;;
   *)
-    (sleep 0.1 && bspc node "$wid" -f) &
-    echo "desktop=X"
+    echo "desktop=X focus=on"
     ;;
   esac
 fi

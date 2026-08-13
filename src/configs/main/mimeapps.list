@@ -12,6 +12,8 @@ video/vnd.avi=mpv.desktop
 x-content/image-dcf=org.gnome.gThumb.Import.desktop
 x-scheme-handler/bruno=bruno.desktop
 x-scheme-handler/jetbrains=jetbrainsd.desktop
+image/jpeg=org.gnome.Loupe.desktop
+image/png=org.gnome.Loupe.desktop
 
 [Added Associations]
 application/json=nvim.desktop;
@@ -24,3 +26,5 @@ video/x-matroska=org.videolan.vlc.desktop;mpv.desktop;
 text/markdown=nvim.desktop;
 video/vnd.avi=mpv.desktop;
 x-content/image-dcf=org.gnome.gThumb.Import.desktop;
+image/jpeg=org.gnome.Loupe.desktop;
+image/png=org.gnome.Loupe.desktop;
