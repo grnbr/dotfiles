@@ -31,9 +31,9 @@ bspc config pointer_follows_focus true
 
 bspc config remove_unplugged_monitors true
 
-bspc desktop 'IV' -l monocle
+bspc desktop 'I' -l monocle
 bspc desktop 'X' -l monocle
-bspc config external_rules_command ${HOME}/.config/bspwm/external_rules.sh
+bspc config external_rules_command ${HOME}/dotfiles/src/configs/optional/bspwm/modules/external_rules.sh
 
-local_settings="$HOME/.bspwm_settings"
+local_settings="$HOME/.config/.bspwm_settings"
 [[ -f "$local_settings" ]] && . "$local_settings"
