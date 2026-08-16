@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-[ -f "$HOME/.bspwm_displays" ] && . "$HOME/.bspwm_displays"
+[ -f "$HOME/.config/.bspwm_displays" ] && . "$HOME/.config/.bspwm_displays"
 
 killall -q polybar
 

@@ -3,10 +3,10 @@
 use_traditional_tripple() {
   . /home/worromot/dotfiles/src/configs/optional/bspwm/src/desktop_constants.sh
 
-  if [ -f "$HOME/.bspwm_displays" ]; then
-    . "$HOME/.bspwm_displays"
+  if [ -f "$HOME/.config/.bspwm_displays" ]; then
+    . "$HOME/.config/.bspwm_displays"
   else
-    notify-send -t 0 "Displays Managment" "~/.bspwm_displays not found — aborting"
+    notify-send -t 0 "Displays Managment" "~/.config/.bspwm_displays not found — aborting"
     exit 1
   fi
 

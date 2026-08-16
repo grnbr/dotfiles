@@ -16,6 +16,9 @@ if [ -n "$DISPLAY_CENTER" ] &&
 
   "$HOME/dotfiles/src/configs/optional/bspwm/modules/display-managment/main.sh"
 
+  if ! systemctl --user is-active --quiet bspwm-displays.service; then
+    systemctl --user start bspwm-displays.service
+  fi
 else
   notify-send -t 0 "Display Manager" \
     "Center display '$DISPLAY_CENTER' is not connected"
@@ -40,7 +43,7 @@ else
 fi
 
 sxhkd &
-bash "$HOME/dotfiles/src/configs/optional/polybar/launch.sh" &
+"$HOME/dotfiles/src/configs/optional/polybar/launch.sh" &
 
 pgrep -f "org.telegram.desktop" >/dev/null || flatpak run org.telegram.desktop &
 pgrep -f "com.discordapp.Discord" >/dev/null || flatpak run com.discordapp.Discord &

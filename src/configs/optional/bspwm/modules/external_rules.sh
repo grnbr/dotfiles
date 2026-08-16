@@ -19,7 +19,7 @@ if is_floating; then
 else
   case "$class" in
   Brave-browser | Chromium-browser)
-    echo "desktop=IV"
+    echo "desktop=I"
     ;;
   org.mozilla.firefox)
     echo "desktop=III"
