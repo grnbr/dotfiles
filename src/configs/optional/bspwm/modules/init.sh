@@ -2,7 +2,7 @@
 
 systemctl --user start bspwm-session.target
 
-DESKTOPS=(I II III IV V VI VII VIII IX X)
+. "$HOME/dotfiles/src/configs/optional/bspwm/src/desktop_constants.sh"
 
 if [ -n "$DISPLAY_CENTER" ] &&
   xrandr --query | grep -q "^${DISPLAY_CENTER} connected"; then
@@ -14,7 +14,7 @@ if [ -n "$DISPLAY_CENTER" ] &&
     bspc monitor "$DISPLAY_CENTER" -d "${DESKTOPS[@]}"
   fi
 
-  "$HOME/dotfiles/src/configs/optional/bspwm/modules/displays-managment.sh"
+  "$HOME/dotfiles/src/configs/optional/bspwm/modules/display-managment/main.sh"
 
 else
   notify-send -t 0 "Display Manager" \
@@ -40,7 +40,7 @@ else
 fi
 
 sxhkd &
-~/dotfiles/src/configs/optional/polybar/launch.sh &
+bash "$HOME/dotfiles/src/configs/optional/polybar/launch.sh" &
 
 pgrep -f "org.telegram.desktop" >/dev/null || flatpak run org.telegram.desktop &
 pgrep -f "com.discordapp.Discord" >/dev/null || flatpak run com.discordapp.Discord &
