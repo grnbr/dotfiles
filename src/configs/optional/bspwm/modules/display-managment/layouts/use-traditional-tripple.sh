@@ -7,12 +7,12 @@ use_traditional_tripple() {
     . "$HOME/.config/.bspwm_displays"
   else
     notify-send -t 0 "Displays Managment" "~/.config/.bspwm_displays not found — aborting"
-    exit 1
+    return 1
   fi
 
   if [[ -z "$DISPLAY_CENTER" && -z "$DISPLAY_LEFT" && -z "$DISPLAY_RIGHT" ]]; then
     notify-send -t 0 "Displays Management" "No displays configured"
-    exit 1
+    return 1
   fi
 
   is_connected() {
@@ -28,6 +28,11 @@ use_traditional_tripple() {
   is_connected "$DISPLAY_RIGHT" && R=1
 
   local -r CONNECTED_DISPLAYS_AMOUNT=$((L + C + R))
+
+  if ((CONNECTED_DISPLAYS_AMOUNT == 0)); then
+    notify-send -t 0 "Traditional Tripple" "No defined displays connected"
+    return 1
+  fi
 
   if ((CONNECTED_DISPLAYS_AMOUNT == 1)); then
     local connected_display=""

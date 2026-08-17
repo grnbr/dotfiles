@@ -4,24 +4,16 @@ systemctl --user start bspwm-session.target
 
 . "$HOME/dotfiles/src/configs/optional/bspwm/src/desktop_constants.sh"
 
-if [ -n "$DISPLAY_CENTER" ] &&
-  xrandr --query | grep -q "^${DISPLAY_CENTER} connected"; then
+bspc monitor -d "${DESKTOPS[@]}"
 
-  bspc wm -O "$DISPLAY_CENTER"
-
-  # Create desktops only if they don't already exist.
-  if ! bspc query -D --names | grep -qx 'X'; then
-    bspc monitor "$DISPLAY_CENTER" -d "${DESKTOPS[@]}"
-  fi
-
+if [ -f "$HOME/.config/.bspwm_displays" ]; then
   "$HOME/dotfiles/src/configs/optional/bspwm/modules/display-managment/main.sh"
-
   if ! systemctl --user is-active --quiet bspwm-displays.service; then
     systemctl --user start bspwm-displays.service
   fi
 else
   notify-send -t 0 "Display Manager" \
-    "Center display '$DISPLAY_CENTER' is not connected"
+    "No display configuration. Make it in .config/bspwm_displays. You can also copy it from bspwm/modules/display-managment/.bspwm_displays.example"
 fi
 
 pkill -x sxhkd
@@ -36,7 +28,9 @@ setxkbmap -layout us,ru -option grp:win_space_toggle &
 xss-lock --transfer-sleep-lock -- i3lock -c 1e1e1e -n &
 xautolock -time 10 -locker "i3lock -c 1e1e1e" &
 
-if lspci | grep -qi nvidia; then
+if systemd-detect-virt --quiet; then
+  :
+elif lspci | grep -qi nvidia; then
   picom --config ~/.config/picom/picom-nvidia.conf &
 else
   picom --config ~/.config/picom/picom.conf &
@@ -48,5 +42,11 @@ sxhkd &
 pgrep -f "org.telegram.desktop" >/dev/null || flatpak run org.telegram.desktop &
 pgrep -f "com.discordapp.Discord" >/dev/null || flatpak run com.discordapp.Discord &
 pgrep -f "brave-browser" >/dev/null || brave-browser --incognito &
-pgrep -x firefox >/dev/null || firefox -P "Main" --no-remote &
+if ! pgrep -x firefox >/dev/null; then
+  if grep -q '^Name=Main$' "$HOME/.mozilla/firefox/profiles.ini" 2>/dev/null; then
+    firefox -P "Main" --no-remote &
+  else
+    firefox &
+  fi
+fi
 pgrep -x kitty >/dev/null || kitty &

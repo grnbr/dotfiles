@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-[ -f "$HOME/.config/.bspwm_displays" ] && . "$HOME/.config/.bspwm_displays"
 
 killall -q polybar
 
@@ -13,9 +12,15 @@ is_connected() {
 
 echo "---" | tee -a /tmp/left.log /tmp/center.log /tmp/right.log >/dev/null
 
-[ -n "$DISPLAY_LEFT" ] && is_connected "$DISPLAY_LEFT" && polybar left 2>&1 | tee -a /tmp/left.log &
-[ -n "$DISPLAY_CENTER" ] && is_connected "$DISPLAY_CENTER" && polybar center 2>&1 | tee -a /tmp/center.log &
-[ -n "$DISPLAY_RIGHT" ] && is_connected "$DISPLAY_RIGHT" && polybar right 2>&1 | tee -a /tmp/right.log &
+if [ -f "$HOME/.config/.bspwm_displays" ]; then
+  . "$HOME/.config/.bspwm_displays"
+
+  [ -n "$DISPLAY_LEFT" ] && is_connected "$DISPLAY_LEFT" && polybar left 2>&1 | tee -a /tmp/left.log &
+  [ -n "$DISPLAY_CENTER" ] && is_connected "$DISPLAY_CENTER" && polybar center 2>&1 | tee -a /tmp/center.log &
+  [ -n "$DISPLAY_RIGHT" ] && is_connected "$DISPLAY_RIGHT" && polybar right 2>&1 | tee -a /tmp/right.log &
+else
+  polybar center 2>&1 | tee -a /tmp/center.log &
+fi
 
 disown
 echo "Bars launched..."
