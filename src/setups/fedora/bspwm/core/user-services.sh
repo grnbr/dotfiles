@@ -2,6 +2,12 @@
 set -e
 
 enable_user_services() {
+  local extra_systemd=(
+    bspwm
+  )
+
+  apply_systemd user "${extra_systemd[@]}"
+
   user_services=(
     darkman
     mpd
