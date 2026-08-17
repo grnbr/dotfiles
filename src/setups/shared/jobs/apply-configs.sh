@@ -44,26 +44,6 @@ _link_optional() {
   done
 }
 
-_link_systemd() {
-  local systemd="$1"
-  local name
-
-  mkdir -p "$HOME/.config/systemd/user"
-
-  shopt -s nullglob
-
-  for f in "$systemd"/*.{service,timer}; do
-    echo "$f"
-    name="$(basename "$f")"
-    ln -sf "$f" "$HOME/.config/systemd/user/$name"
-    echo "Linked systemd: $name"
-  done
-
-  shopt -u nullglob
-
-  systemctl --user daemon-reload
-}
-
 apply_configs() {
   local MAIN OPTIONAL SYSTEMD DEST
   local ROOT_DIR_LOCAL="${ROOT_DIR:-}"
@@ -75,7 +55,6 @@ apply_configs() {
 
   MAIN="$ROOT_DIR_LOCAL/src/configs/main"
   OPTIONAL="$ROOT_DIR_LOCAL/src/configs/optional"
-  SYSTEMD_USER="$ROOT_DIR_LOCAL/src/configs/systemd/main/user"
   DEST="$HOME/.config"
 
   mkdir -p "$DEST"
@@ -83,7 +62,6 @@ apply_configs() {
 
   _link_main "$MAIN" "$DEST"
   _link_optional "$OPTIONAL" "$DEST" "$@"
-  _link_systemd "$SYSTEMD_USER"
 }
 
 if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then

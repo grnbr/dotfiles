@@ -1,0 +1,12 @@
+[Unit]
+Description=Automatic X11 display management
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=%h/dotfiles/src/configs/optional/bspwm/modules/display-managment/display-listener.sh
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=default.target

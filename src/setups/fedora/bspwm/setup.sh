@@ -39,6 +39,7 @@ source "$CURRENT_DIR/core/packages.sh"
 install_bspwm_packages
 
 source "$SHARED_JOBS_DIR/apply-configs.sh"
+source "$SHARED_JOBS_DIR/apply_systemd.sh"
 source "$CURRENT_DIR/core/configs.sh"
 configure_bspwm
 

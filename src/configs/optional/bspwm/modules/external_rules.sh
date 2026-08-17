@@ -31,7 +31,7 @@ else
     echo "desktop=VIII"
     ;;
   *)
-    echo "desktop=X focus=on"
+    echo "desktop=X focus=on follow=on"
     ;;
   esac
 fi
