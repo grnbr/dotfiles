@@ -30,7 +30,7 @@ sudo dnf config-manager disable fedora-cisco-openh264
 echo "Updating system..."
 
 sudo dnf upgrade -y
-sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
 source "$ROOT_DIR/src/setups/fedora/shared/packages/main.sh"
 install_main_packages
@@ -39,7 +39,7 @@ source "$CURRENT_DIR/core/packages.sh"
 install_bspwm_packages
 
 source "$SHARED_JOBS_DIR/apply-configs.sh"
-source "$SHARED_JOBS_DIR/apply_systemd.sh"
+source "$SHARED_JOBS_DIR/apply-systemd.sh"
 source "$CURRENT_DIR/core/configs.sh"
 configure_bspwm
 
