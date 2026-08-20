@@ -1,40 +1,37 @@
 #!/bin/bash
-SCRIPT="$HOME/dotfiles/src/configs/optional/bspwm/modules/display-managment/main.sh"
 
-# Wait until X is available.
+SCRIPT="$HOME/dotfiles/src/configs/optional/bspwm/modules/display-managment/main.sh"
+POLYBAR="$HOME/dotfiles/src/configs/optional/polybar/launch.sh"
+
 until xrandr --query >/dev/null 2>&1; do
   sleep 1
 done
 
-previous_state="$(
+get_state() {
   xrandr --query |
     awk '$2 == "connected" || $2 == "disconnected" {
-      print $1, $2
-    }' |
+            print $1, $2
+        }' |
     sort
-)"
+}
+
+previous_state="$(get_state)"
 
 while true; do
-  current_state="$(
-    xrandr --query |
-      awk '$2 == "connected" || $2 == "disconnected" {
-        print $1, $2
-      }' |
-      sort
-  )"
+  current_state="$(get_state)"
 
   if [[ "$current_state" != "$previous_state" ]]; then
-    # pkill picom
-
-    # while pgrep -x picom >/dev/null; do
-    #   sleep 0.1
-    # done
-
     "$SCRIPT"
 
-    "$HOME/dotfiles/src/configs/optional/polybar/launch.sh" &
-    # picom --backend glx &
-    previous_state="$current_state"
+    pkill -x polybar
+
+    while pgrep -x polybar >/dev/null; do
+      sleep 0.05
+    done
+
+    "$POLYBAR" &
+
+    previous_state="$(get_state)"
   fi
 
   sleep 0.5

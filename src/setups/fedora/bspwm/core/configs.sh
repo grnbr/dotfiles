@@ -12,6 +12,7 @@ configure_bspwm() {
     bspwm
     sxhkd
     picom
+    xdg-desktop-portal
   )
 
   echo "Apply main configs..."

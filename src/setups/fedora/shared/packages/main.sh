@@ -47,6 +47,7 @@ install_main_packages() {
     perl-Image-ExifTool
     rust
     cargo
+    golang
   )
 
   local misc=(

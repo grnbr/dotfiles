@@ -4,7 +4,11 @@ class=$2
 instance=$3
 consequences=$4
 
-floating_apps=(Xfce-polkit gnome-calculator Xdg-desktop-portal-gtk Brave)
+if [[ "$class" == "kitty" ]]; then
+  exit 0
+fi
+
+floating_apps=(Xfce-polkit gnome-calculator Xdg-desktop-portal-gtk Brave hiit pavucontrol Nm-connection-editor Blueman-manager)
 
 is_floating() {
   local app
@@ -24,9 +28,9 @@ else
   org.mozilla.firefox)
     echo "desktop=III"
     ;;
-  kitty)
-    echo "desktop=II"
-    ;;
+  # kitty)
+  #   echo "desktop=II"
+  #   ;;
   TelegramDesktop | discord)
     echo "desktop=VIII"
     ;;

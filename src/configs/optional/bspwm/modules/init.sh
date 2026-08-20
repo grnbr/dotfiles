@@ -4,7 +4,9 @@ systemctl --user start bspwm-session.target
 
 . "$HOME/dotfiles/src/configs/optional/bspwm/src/desktop_constants.sh"
 
-bspc monitor -d "${DESKTOPS[@]}"
+if ! bspc query -D -d "${DESKTOPS[0]}" >/dev/null 2>&1; then
+  bspc monitor -d "${DESKTOPS[@]}"
+fi
 
 if [ -f "$HOME/.config/.bspwm_displays" ]; then
   "$HOME/dotfiles/src/configs/optional/bspwm/modules/display-managment/main.sh"
@@ -39,6 +41,7 @@ fi
 sxhkd &
 "$HOME/dotfiles/src/configs/optional/polybar/launch.sh" &
 
+pgrep -x nm-applet >/dev/null || nm-applet &
 pgrep -f "org.telegram.desktop" >/dev/null || flatpak run org.telegram.desktop &
 pgrep -f "com.discordapp.Discord" >/dev/null || flatpak run com.discordapp.Discord &
 pgrep -f "brave-browser" >/dev/null || brave-browser --incognito &
@@ -49,4 +52,6 @@ if ! pgrep -x firefox >/dev/null; then
     firefox &
   fi
 fi
+
+bspc rule -a Kitty desktop='II' one-shot=true
 pgrep -x kitty >/dev/null || kitty &

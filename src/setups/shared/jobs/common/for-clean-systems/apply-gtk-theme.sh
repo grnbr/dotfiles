@@ -12,6 +12,7 @@ apply_gtk_theme() {
   fi
   gsettings set org.gnome.desktop.interface gtk-theme "Adwaita"
   gsettings set org.gnome.desktop.interface icon-theme "Adwaita"
+  gsettings set org.gnome.desktop.interface font-name "Inter 10"
   gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
 }
 
