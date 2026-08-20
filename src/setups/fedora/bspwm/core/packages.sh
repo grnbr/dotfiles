@@ -13,6 +13,8 @@ install_bspwm_packages() {
     fd
     fd-find
     tar
+    bluez
+    bluez-tools
 
     sddm
 
@@ -33,7 +35,6 @@ install_bspwm_packages() {
     xset
     xrandr
     picom
-    arandr
     xev
   )
   local apps=(
@@ -47,6 +48,9 @@ install_bspwm_packages() {
     evince
     gnome-calculator
     gnome-sound-recorder
+    arandr
+    blueman
+    network-manager-applet
   )
   local cli=(
     nmap-ncat
@@ -58,15 +62,20 @@ install_bspwm_packages() {
   )
   local utils=(
     dunst
-    maim
-    slop
+    # maim
+    # slop
     polybar
     rofi
+    flameshot
   )
   local audio=(
     pavucontrol
     pulseaudio-utils
     playerctl
+  )
+  local fonts=(
+    rsms-inter-fonts
+    google-noto-color-emoji-fonts
   )
   local packages=(
     "${system[@]}"
@@ -75,6 +84,7 @@ install_bspwm_packages() {
     "${terminal[@]}"
     "${utils[@]}"
     "${audio[@]}"
+    "${fonts[@]}"
   )
   sudo dnf install -y "${packages[@]}"
 }

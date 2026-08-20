@@ -27,10 +27,47 @@ use_traditional_tripple() {
   is_connected "$DISPLAY_CENTER" && C=1
   is_connected "$DISPLAY_RIGHT" && R=1
 
+  handle_desktop_placeholder() {
+    local action="$1"
+
+    declare -A DISPLAYS=()
+
+    [[ -n "$DISPLAY_LEFT" ]] && DISPLAYS["$DISPLAY_LEFT"]=$L
+    [[ -n "$DISPLAY_CENTER" ]] && DISPLAYS["$DISPLAY_CENTER"]=$C
+    [[ -n "$DISPLAY_RIGHT" ]] && DISPLAYS["$DISPLAY_RIGHT"]=$R
+
+    for mon in "${!DISPLAYS[@]}"; do
+      [[ -z "$mon" ]] && continue
+
+      case "$action" in
+      create)
+        if [[ "${DISPLAYS[$mon]}" -eq 0 ]]; then
+          bspc monitor "$mon" -a Desktop 2>/dev/null
+        fi
+        ;;
+
+      remove)
+        while read -r desktop; do
+          [[ -n "$desktop" ]] && bspc desktop "$desktop" -r
+        done < <(
+          bspc query -D --names | grep -Fx "Desktop"
+        )
+        ;;
+
+      *)
+        echo "handle_desktop_placeholder: unknown action '$action'" >&2
+        return 1
+        ;;
+      esac
+    done
+  }
+
+  handle_desktop_placeholder create
+
   local -r CONNECTED_DISPLAYS_AMOUNT=$((L + C + R))
 
   if ((CONNECTED_DISPLAYS_AMOUNT == 0)); then
-    notify-send -t 0 "Traditional Tripple" "No defined displays connected"
+    # notify-send -t 0 "Traditional Tripple" "No defined displays connected"
     return 1
   fi
 
@@ -54,8 +91,9 @@ use_traditional_tripple() {
       bspc desktop "$desktop" -m "$connected_display"
     done
 
-    bspc monitor "$connected_display" -o "${DESKTOPS[@]}"
+    bspc desktop "${DESKTOPS[-1]}" -m "$connected_display"
 
+    bspc monitor "$connected_display" -o "${DESKTOPS[@]}"
   else
 
     local -ar excluded_primary_desktops=("${DESKTOPS[0]}" "${DESKTOPS[-1]}")
@@ -203,7 +241,7 @@ use_traditional_tripple() {
     fi
   fi
 
-  bspc desktop Desktop -r
+  handle_desktop_placeholder remove
 }
 
 if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
