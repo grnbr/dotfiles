@@ -27,6 +27,7 @@ install_main_packages() {
     less
     openbsd-netcat
     rsync
+    informant
   )
 
   local apps=(
@@ -73,6 +74,7 @@ install_main_packages() {
     inter-font
     noto-fonts
     noto-fonts-emoji
+    ttf-jetbrains-mono-nerd
   )
 
   local packages=(
