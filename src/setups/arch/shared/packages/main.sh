@@ -20,7 +20,7 @@ install_main_packages() {
     task
     translate-shell
     dictd
-
+    less
   )
 
   local apps=(
@@ -70,8 +70,6 @@ install_main_packages() {
 
   sudo pacman -S --needed --noconfirm "${packages[@]}"
 }
-
-install_aur_packages
 
 if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
   install_main_packages
