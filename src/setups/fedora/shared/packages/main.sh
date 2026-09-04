@@ -58,7 +58,7 @@ install_main_packages() {
   )
 
   local misc=(
-    # xdg-user-dirs
+    xdg-user-dirs
     darkman
     inotify-tools
   )

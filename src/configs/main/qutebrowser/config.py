@@ -7,6 +7,7 @@ c.auto_save.session = True
 c.session.lazy_restore = True
 c.url.start_pages = ["about:blank"]
 c.url.default_page = "about:blank"
+# content.private_browsing = True
 
 # Apperance
 c.tabs.position = "left"

@@ -3,6 +3,6 @@ src/configs/main/mpv/memo-history.log
 src/configs/main/qutebrowser/autoconfig.yml
 src/configs/main/qutebrowser/bookmarks/
 src/configs/main/qutebrowser/quickmarks
-
+src/configs/main/qutebrowser/greasemonkey/hidden-elements.js
 
 
