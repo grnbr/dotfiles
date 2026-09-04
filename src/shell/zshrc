@@ -1,5 +1,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 
+[[ -f "$HOME/.zshrc_custom" ]] && source "$HOME/.zshrc_custom"
+
 zstyle ':omz:plugins:nvm' lazy yes
 
 plugins=(

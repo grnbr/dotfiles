@@ -1,7 +1,7 @@
 #!/bin/bash
 
 use_traditional_tripple() {
-  . /home/worromot/dotfiles/src/configs/optional/bspwm/src/desktop_constants.sh
+  . /home/worromot/dotfiles/src/configs/optional/bspwm/desktop_constants.sh
 
   if [ -f "$HOME/.config/.bspwm_displays" ]; then
     . "$HOME/.config/.bspwm_displays"

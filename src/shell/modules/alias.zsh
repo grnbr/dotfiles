@@ -4,7 +4,6 @@ alias reb='read "ans?Are you sure you want to reboot? (y/N) " && [[ $ans == [Yy]
 alias cl='clear'
 alias wl='wl-copy'
 alias xcp='xclip -selection clipboard'
-alias pwdc="pwd | wl-copy"
 alias free='free -h'
 alias rmconfbak='rm -rf ~/.config.bak*'
 

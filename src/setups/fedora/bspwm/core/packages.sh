@@ -36,10 +36,12 @@ install_bspwm_packages() {
     xrandr
     picom
     xev
+    wmctrl
   )
   local apps=(
-    firefox
     nautilus
+
+    firefox
     calibre
     loupe
     rhythmbox
@@ -76,6 +78,8 @@ install_bspwm_packages() {
   local fonts=(
     rsms-inter-fonts
     google-noto-color-emoji-fonts
+    google-noto-sans-fonts
+    google-noto-serif-fonts
   )
   local packages=(
     "${system[@]}"

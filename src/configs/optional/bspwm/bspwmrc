@@ -5,6 +5,4 @@ MODULES_DIR="$(dirname "$(readlink -f "$0")")/modules"
 [ -f "$HOME/.config/.bspwm_displays" ] && . "$HOME/.config/.bspwm_displays"
 
 . "$MODULES_DIR/init.sh"
-. "$MODULES_DIR/config.sh"
-
-[ -f "$HOME/.config/.bspwm_settings" ] && . "$HOME/.config/.bspwm_settings"
+. "$MODULES_DIR/settings.sh"

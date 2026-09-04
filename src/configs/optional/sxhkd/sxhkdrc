@@ -8,7 +8,12 @@ super + Return
 
 # program launcher
 super + d
-	rofi -show drun
+  rofi -show drun
+
+super + ctrl + d
+  bspc rule -a '*' focus=off follow=off -o; rofi -show drun
+# super + shift + d
+#   "$HOME/dotfiles/src/configs/optional/bspwm/scripts/rofi-open-on-last-workspace.sh"
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -28,6 +33,9 @@ super + alt + Escape
 super + {_,shift + }w
 	bspc node -{c,k}
 
+super + v
+    pgrep -f "nerd-dictation begin" > /dev/null && ~/nerd-dictation/nerd-dictation end || ~/nerd-dictation/nerd-dictation begin --vosk-model-dir="$HOME/nerd-dictation/model"
+
 # alternate between the tiled and monocle layout
 super + m
 	bspc desktop -l next
@@ -37,8 +45,8 @@ super + y
 	bspc node newest.marked.local -n newest.!automatic.local
 
 # swap the current node and the biggest node
-super + g
-	bspc node -s biggest
+# super + g
+# 	bspc node -s biggest
 
 #
 # state/flags
@@ -79,10 +87,16 @@ super + {grave,Tab}
 	bspc {node,desktop} -f last
 
 alt + Tab
-	bspc node -f next.local
+    bspc node -f "$(bspc query -N -n next.local.!floating)"
 
 alt + shift + Tab
-	bspc node -f prev.local
+    bspc node -f "$(bspc query -N -n prev.local.!floating)"
+
+alt + grave
+    bspc node -f next.local.floating
+
+alt + shift + grave
+    bspc node -f prev.local.floating
 
 # focus the older or newer node in the focus history
 super + {o,i}
@@ -94,7 +108,10 @@ super + {o,i}
 # super + {_,shift + }{1-9,0}
 # 	bspc {desktop -f,node -d} '^{1-9,10}'
 super + {_,shift + }{1-9,0}
-	bspc {desktop --focus,node --to-desktop} '{I,II,III,IV,V,VI,VII,VIII,IX,X}' {,--follow}
+    bspc {desktop --focus,node --to-desktop} '{I,II,III,IV,V,VI,VII,VIII,IX,X}' {,--follow}
+
+super + shift + ctrl + {1-9,0}
+    bspc node --to-desktop '{I,II,III,IV,V,VI,VII,VIII,IX,X}'
 
 super + shift + s
     flameshot gui
@@ -132,11 +149,11 @@ super + ctrl + shift + space
 
 # expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
-	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+	bspc node -z {left -50 0,bottom 0 50,top 0 -50,right 50 0}
 
 # contract a window by moving one of its side inward
 super + alt + shift + {h,j,k,l}
-	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+	bspc node -z {right -50 0,top 0 50,bottom 0 -50,left 50 0}
 
 # move a floating window
 super + ctrl + shift + {h,j,k,l,Left,Down,Up,Right}

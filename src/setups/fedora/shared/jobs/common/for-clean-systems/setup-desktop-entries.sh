@@ -4,10 +4,13 @@ install_browser_incognito_entries() {
   local apps_dir="$HOME/.local/share/applications"
   mkdir -p "$apps_dir"
 
+  local qutebrowser_config="$HOME/.config/qutebrowser/config.py"
+
   local -A entries=(
     ["brave-incognito.desktop"]="brin|brave-browser --incognito|brave-browser"
     ["firefox-private.desktop"]="frin|firefox --private-window|firefox"
     ["chromium-incognito.desktop"]="cin|chromium-browser --incognito|chromium"
+    ["qutebrowser-private.desktop"]="qin|qutebrowser -T -C $qutebrowser_config|qutebrowser"
   )
 
   local file name exec_cmd icon
@@ -15,7 +18,7 @@ install_browser_incognito_entries() {
     IFS='|' read -r name exec_cmd icon <<<"${entries[$file]}"
 
     if [ -f "$apps_dir/$file" ]; then
-      warn "desktop entry $file already exists, skipping"
+      echo "desktop entry $file already exists, skipping"
       continue
     fi
 
