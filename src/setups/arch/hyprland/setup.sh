@@ -36,8 +36,8 @@ sudo pacman -Syu --noconfirm
 source "$ROOT_DIR/src/setups/arch/shared/packages/main.sh"
 install_main_packages
 
-# source "$CURRENT_DIR/core/packages.sh"
-# install_arch_packages
+source "$CURRENT_DIR/core/packages.sh"
+install_hyprland_packages
 #
 # source "$SHARED_JOBS_DIR/apply-configs.sh"
 # source "$SHARED_JOBS_DIR/apply-systemd.sh"

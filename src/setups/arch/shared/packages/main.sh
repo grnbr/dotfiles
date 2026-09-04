@@ -7,6 +7,10 @@ install_main_packages() {
   local system=(
     git
     python-pip
+
+    tar
+    bluez
+    bluez-tools
   )
 
   local cli=(
@@ -21,6 +25,8 @@ install_main_packages() {
     translate-shell
     dictd
     less
+    openbsd-netcat
+    rsync
   )
 
   local apps=(
@@ -53,10 +59,20 @@ install_main_packages() {
     go
   )
 
+  local terminal=(
+    kitty
+  )
+
   local misc=(
     xdg-user-dirs
     darkman
     inotify-tools
+  )
+
+  local fonts=(
+    inter-font
+    noto-fonts
+    noto-fonts-emoji
   )
 
   local packages=(
@@ -65,7 +81,9 @@ install_main_packages() {
     "${music[@]}"
     "${apps[@]}"
     "${dev[@]}"
+    "${terminal[@]}"
     "${misc[@]}"
+    "${fonts[@]}"
   )
 
   sudo pacman -S --needed --noconfirm "${packages[@]}"
