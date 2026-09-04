@@ -22,7 +22,7 @@ export SHARED_JOBS_DIR
 source "$UTILS_DIR/keep-sudo.sh"
 source "$UTILS_DIR/warn.sh"
 source "$UTILS_DIR/output-result.sh"
-source "$SCRIPT_DIR/bootstrap/mirrors.sh"
+source "$CURRENT_DIR/bootstrap/mirrors.sh"
 
 keep_sudo
 output_result
@@ -30,32 +30,33 @@ output_result
 bootstrap_mirrors
 
 echo "Updating system..."
+sudo sed -i '/\[multilib\]/,/Include/'s/^#//'' /etc/pacman.conf
 sudo pacman -Syu --noconfirm
 
 source "$ROOT_DIR/src/setups/arch/shared/packages/main.sh"
 install_main_packages
 
-source "$CURRENT_DIR/core/packages.sh"
-install_arch_packages
-
-source "$SHARED_JOBS_DIR/apply-configs.sh"
-source "$SHARED_JOBS_DIR/apply-systemd.sh"
-source "$CURRENT_DIR/core/configs.sh"
-configure_arch
-
-source "$CURRENT_DIR/core/services.sh"
-enable_services
-
-source "$CURRENT_DIR/core/user-services.sh"
-enable_user_services
-
-# --- Run jobs ---
-JOBS_DIR="$SCRIPT_DIR/jobs"
-for job in "$JOBS_DIR"/*.sh; do
-  [ -e "$job" ] || continue
-  echo "→ Running job $job"
-  bash "$job"
-done
+# source "$CURRENT_DIR/core/packages.sh"
+# install_arch_packages
+#
+# source "$SHARED_JOBS_DIR/apply-configs.sh"
+# source "$SHARED_JOBS_DIR/apply-systemd.sh"
+# source "$CURRENT_DIR/core/configs.sh"
+# configure_arch
+#
+# source "$CURRENT_DIR/core/services.sh"
+# enable_services
+#
+# source "$CURRENT_DIR/core/user-services.sh"
+# enable_user_services
+#
+# # --- Run jobs ---
+# JOBS_DIR="$SCRIPT_DIR/jobs"
+# for job in "$JOBS_DIR"/*.sh; do
+#   [ -e "$job" ] || continue
+#   echo "→ Running job $job"
+#   bash "$job"
+# done
 
 # --- Install Zsh at the end ---
 #echo "Installing Zsh..."
