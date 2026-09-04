@@ -75,8 +75,6 @@ install_main_packages() {
   sudo dnf install -y "${packages[@]}"
 }
 
-install_main_packages
-
 if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
   install_main_packages
 fi
