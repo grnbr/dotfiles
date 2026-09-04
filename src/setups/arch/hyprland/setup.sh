@@ -38,17 +38,17 @@ install_main_packages
 
 source "$CURRENT_DIR/core/packages.sh"
 install_hyprland_packages
-#
-# source "$SHARED_JOBS_DIR/apply-configs.sh"
-# source "$SHARED_JOBS_DIR/apply-systemd.sh"
-# source "$CURRENT_DIR/core/configs.sh"
-# configure_arch
-#
-# source "$CURRENT_DIR/core/services.sh"
-# enable_services
-#
-# source "$CURRENT_DIR/core/user-services.sh"
-# enable_user_services
+
+source "$SHARED_JOBS_DIR/apply-configs.sh"
+source "$SHARED_JOBS_DIR/apply-systemd.sh"
+source "$CURRENT_DIR/core/configs.sh"
+configure_hyprland
+
+source "$CURRENT_DIR/core/services.sh"
+enable_services
+
+source "$CURRENT_DIR/core/user-services.sh"
+enable_user_services
 #
 # # --- Run jobs ---
 # JOBS_DIR="$SCRIPT_DIR/jobs"
