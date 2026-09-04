@@ -26,10 +26,16 @@ install_main_packages() {
   local apps=(
     qbittorrent
     mpv
+
     thunar
+    tumbler
+    tumbler-extras
+    ffmpegthumbnailer
+
     chromium
     qutebrowser
     gimp
+    steam
   )
 
   local music=(
@@ -41,6 +47,7 @@ install_main_packages() {
   local dev=(
     nodejs
     npm
+    pnpm
     postgresql
     ffmpeg
     iperf3

@@ -2,7 +2,7 @@
 
 systemctl --user start bspwm-session.target
 
-. "$HOME/dotfiles/src/configs/optional/bspwm/src/desktop_constants.sh"
+. "$HOME/dotfiles/src/configs/optional/bspwm/desktop_constants.sh"
 
 if ! bspc query -D -d "${DESKTOPS[0]}" >/dev/null 2>&1; then
   bspc monitor -d "${DESKTOPS[@]}"
@@ -38,6 +38,8 @@ else
   picom --config ~/.config/picom/picom.conf &
 fi
 
+bspc config external_rules_command ${HOME}/dotfiles/src/configs/optional/bspwm/modules/external_rules.sh
+
 sxhkd &
 "$HOME/dotfiles/src/configs/optional/polybar/launch.sh" &
 
@@ -53,5 +55,6 @@ if ! pgrep -x firefox >/dev/null; then
   fi
 fi
 
-bspc rule -a Kitty desktop='II' one-shot=true
 pgrep -x kitty >/dev/null || kitty &
+
+systemctl --user restart darkman

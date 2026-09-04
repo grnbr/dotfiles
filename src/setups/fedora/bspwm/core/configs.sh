@@ -13,6 +13,7 @@ configure_bspwm() {
     sxhkd
     picom
     xdg-desktop-portal
+    rofi
   )
 
   echo "Apply main configs..."

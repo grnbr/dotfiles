@@ -14,15 +14,16 @@ x-scheme-handler/bruno=bruno.desktop
 x-scheme-handler/jetbrains=jetbrainsd.desktop
 image/jpeg=org.gnome.Loupe.desktop
 image/png=org.gnome.Loupe.desktop
+inode/directory=org.gnome.Nautilus.desktop
 
 [Added Associations]
 application/json=nvim.desktop;
 video/mp4=org.videolan.vlc.desktop;org.gnome.Totem.desktop;org.videolan.VLC.desktop;mpv.desktop;info.smplayer.SMPlayer.desktop;
-video/webm=mpv.desktop;
+video/webm=org.gnome.Rhythmbox3.device.desktop;mpv.desktop;
 audio/mpeg=mpv.desktop;org.gnome.Rhythmbox3.desktop;
 video/quicktime=org.gnome.Totem.desktop;org.videolan.vlc.desktop;mpv.desktop;
 text/plain=nvim.desktop;
-video/x-matroska=org.videolan.vlc.desktop;mpv.desktop;
+video/x-matroska=vlc.desktop;org.videolan.vlc.desktop;mpv.desktop;
 text/markdown=nvim.desktop;
 video/vnd.avi=mpv.desktop;
 x-content/image-dcf=org.gnome.gThumb.Import.desktop;

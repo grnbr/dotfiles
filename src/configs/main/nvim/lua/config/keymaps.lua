@@ -13,6 +13,7 @@ vim.keymap.set("n", "<C-k>", "<C-w>k") -- move to top split
 vim.keymap.set("n", "<C-l>", "<C-w>l") -- move to right split
 
 vim.keymap.set({ "n", "v" }, "c", '"_c')
+vim.keymap.set({ "n", "v" }, "C", '"_C')
 vim.keymap.set({ "n", "v" }, "<A-c>", '"+c')
 vim.keymap.set({ "n", "v" }, "x", '"_x')
 vim.keymap.set({ "n", "x" }, "y", '"+y')

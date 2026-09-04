@@ -25,6 +25,7 @@ map({ "i", "s" }, "<Tab>", function()
 end)
 
 vim.keymap.set({ "n", "v" }, "c", '"_c')
+vim.keymap.set({ "n", "v" }, "C", '"_C')
 vim.keymap.set({ "n", "v" }, "<A-c>", '"+c')
 vim.keymap.set({ "n", "v" }, "x", '"_x')
 vim.keymap.set({ "n", "x" }, "y", '"+y')
