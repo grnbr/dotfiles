@@ -39,6 +39,9 @@ install_main_packages
 source "$CURRENT_DIR/core/packages.sh"
 install_hyprland_packages
 
+source "$CURRENT_DIR/core/aur.sh"
+install_aur_packages
+
 source "$SHARED_JOBS_DIR/apply-configs.sh"
 source "$SHARED_JOBS_DIR/apply-systemd.sh"
 source "$CURRENT_DIR/core/configs.sh"
@@ -49,21 +52,13 @@ enable_services
 
 source "$CURRENT_DIR/core/user-services.sh"
 enable_user_services
-#
-# # --- Run jobs ---
-# JOBS_DIR="$SCRIPT_DIR/jobs"
-# for job in "$JOBS_DIR"/*.sh; do
-#   [ -e "$job" ] || continue
-#   echo "→ Running job $job"
-#   bash "$job"
-# done
 
-# --- Install Zsh at the end ---
-#echo "Installing Zsh..."
-#bash "$SHARED_JOBS_DIR/install-zsh.sh"
-
-#echo "Install informant..."
-#bash "$ROOT_DIR/src/setups/arch/shared/install-informant.sh"
+JOBS_DIR="$CURRENT_DIR/jobs"
+for job in "$JOBS_DIR"/*.sh; do
+  [ -e "$job" ] || continue
+  echo "→ Running job $job"
+  bash "$job"
+done
 
 echo "All done! Reboot recommended."
 

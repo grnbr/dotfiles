@@ -1,23 +1,29 @@
 #!/bin/bash
 set -e
 
-BUILD_DIR="$HOME/.local/src/yay"
+install_aur_packages() {
+  local BUILD_DIR="$HOME/.local/src/yay"
 
-if ! command -v yay &>/dev/null; then
-  echo "Installing yay..."
+  if ! command -v yay &>/dev/null; then
+    echo "Installing yay..."
+    sudo pacman -S --needed git base-devel
+    rm -rf "$BUILD_DIR"
+    mkdir -p "$HOME/.local/src"
+    git clone https://aur.archlinux.org/yay.git "$BUILD_DIR"
+    (
+      cd "$BUILD_DIR"
+      makepkg -si --noconfirm
+    )
+  fi
 
-  mkdir -p "$HOME/.local/src"
-  git clone https://aur.archlinux.org/yay.git "$BUILD_DIR"
+  local aur_packages=(
+    brave-bin
+  )
 
-  cd "$BUILD_DIR"
-  makepkg -si --noconfirm
+  echo "Installing AUR packages..."
+  yay -S --noconfirm --needed "${aur_packages[@]}"
+}
+
+if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
+  install_aur_packages
 fi
-
-aur_packages=(
-  brave-bin
-  sing-box
-)
-
-echo "Installing AUR packages..."
-
-yay -S --noconfirm --needed "${aur_packages[@]}"
