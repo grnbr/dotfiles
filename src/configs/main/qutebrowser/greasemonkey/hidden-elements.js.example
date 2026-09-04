@@ -1,0 +1,31 @@
+// ==UserScript==
+// @name         Hidden elements
+// @match        *://*/*
+// @run-at       document-end
+// ==/UserScript==
+
+const hiddenElements = {
+    "example.com": [
+        "#example"
+    ]
+};
+
+function matchesDomain(host, domain) {
+    return host === domain || host.endsWith("." + domain);
+}
+
+const selectors = Object.entries(hiddenElements)
+    .filter(([domain]) => matchesDomain(location.hostname, domain))
+    .flatMap(([, selectors]) => selectors);
+
+if (selectors.length) {
+    const style = document.createElement("style");
+
+    style.textContent = `
+        ${selectors.join(",\n")} {
+            display: none !important;
+        }
+    `;
+
+    document.documentElement.appendChild(style);
+}

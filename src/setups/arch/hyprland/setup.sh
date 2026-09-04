@@ -1,42 +1,53 @@
 #!/bin/bash
 set -e
 
-# Resolve directories
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-ROOT_DIR="$(git -C "$SCRIPT_DIR" rev-parse --show-toplevel 2>/dev/null)" || {
+readonly CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+ROOT_DIR="$(git -C "$CURRENT_DIR" rev-parse --show-toplevel 2>/dev/null)" || {
   echo "ERROR: not inside a git repo"
   exit 1
 }
-SHARED_DIR="$ROOT_DIR/src/setups/shared"
-SHARED_JOBS_DIR="$SHARED_DIR/jobs"
+readonly ROOT_DIR
+export ROOT_DIR
 
-source "$SHARED_DIR/utils/keep-sudo.sh"
-source "$SHARED_DIR/utils/warn.sh"
+readonly SHARED_DIR="$ROOT_DIR/src/setups/shared"
+export SHARED_DIR
+
+readonly UTILS_DIR="$SHARED_DIR/utils"
+export UTILS_DIR
+
+readonly SHARED_JOBS_DIR="$ROOT_DIR/src/setups/shared/jobs"
+export SHARED_JOBS_DIR
+
+source "$UTILS_DIR/keep-sudo.sh"
+source "$UTILS_DIR/warn.sh"
+source "$UTILS_DIR/output-result.sh"
 source "$SCRIPT_DIR/bootstrap/mirrors.sh"
 
-LOG="/tmp/setup-$(date +%s).log"
-exec > >(tee "$LOG") 2>&1
-echo "Logging to $LOG"
-
 keep_sudo
+output_result
+
 bootstrap_mirrors
 
 echo "Updating system..."
 sudo pacman -Syu --noconfirm
 
-# --- Source core scripts in order ---
-CORE_SCRIPTS=(
-  "$SCRIPT_DIR/core/packages.sh"
-  "$SCRIPT_DIR/core/aur.sh"
-  "$SCRIPT_DIR/core/services.sh"
-  "$SCRIPT_DIR/core/user-services.sh"
-  "$SCRIPT_DIR/core/configs.sh"
-)
+source "$ROOT_DIR/src/setups/arch/shared/packages/main.sh"
+install_main_packages
 
-for script in "${CORE_SCRIPTS[@]}"; do
-  echo "→ Running $script"
-  bash "$script"
-done
+source "$CURRENT_DIR/core/packages.sh"
+install_arch_packages
+
+source "$SHARED_JOBS_DIR/apply-configs.sh"
+source "$SHARED_JOBS_DIR/apply-systemd.sh"
+source "$CURRENT_DIR/core/configs.sh"
+configure_arch
+
+source "$CURRENT_DIR/core/services.sh"
+enable_services
+
+source "$CURRENT_DIR/core/user-services.sh"
+enable_user_services
 
 # --- Run jobs ---
 JOBS_DIR="$SCRIPT_DIR/jobs"

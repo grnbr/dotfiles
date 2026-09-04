@@ -1,100 +1,78 @@
-# ── system ─────────────────────────────
-system=(
-  git
-  base-devel
-  man-db
-  man-pages
-  xdg-utils
-  gvfs
-  darkman
-  wl-clipboard
-  fd
-  unzip
-)
+#!/bin/bash
+set -e
 
-tool=(
-  inotify-tools
-)
+install_main_packages() {
+  echo "==> Installing main packages..."
 
-# ── shell / cli ────────────────────────
-cli=(
-  neovim
-  htop
-  tree
-  fzf
-  zsh
-  fastfetch
-  openbsd-netcat
-  yt-dlp
-)
+  local system=(
+    git
+    python-pip
+  )
 
-# ── terminal ───────────────────────────
-terminal=(
-  kitty
-)
+  local cli=(
+    tree
+    fzf
+    zsh
+    fastfetch
+    yt-dlp
+    gdu
+    bc
+    task
+    translate-shell
+    dictd
 
-# ── audio ──────────────────────────────
-audio=(
-  pipewire
-  pipewire-alsa
-  pipewire-pulse
-  wireplumber
-)
+  )
 
-# ── fonts ──────────────────────────────
-fonts=(
-)
+  local apps=(
+    qbittorrent
+    mpv
+    thunar
+    tumbler
+    ffmpegthumbnailer
+    chromium
+    qutebrowser
+    gimp
+    steam
+  )
 
-# ── apps ───────────────────────────────
-apps=(
-  firefox
-  qbittorrent
-  libreoffice
-  mpv
-  calibre
-  loupe
-  bitwarden
-)
+  local music=(
+    mpd
+    mpc
+    ncmpcpp
+  )
 
-music=(
-  mpd
-  mpc
-  ncmpcpp
-)
+  local dev=(
+    nodejs
+    npm
+    pnpm
+    postgresql
+    ffmpeg
+    iperf3
+    perl-image-exiftool
+    rust
+    go
+  )
 
-# ── file management ────────────────────
-files=(
-  nautilus
-)
+  local misc=(
+    xdg-user-dirs
+    darkman
+    inotify-tools
+  )
 
-# ── dev ────────────────────────────────
-dev=(
-  nodejs
-  npm
-  postgresql
-  ffmpeg
-  iperf3
-  perl-image-exiftool
-  rust
-)
+  local packages=(
+    "${system[@]}"
+    "${cli[@]}"
+    "${music[@]}"
+    "${apps[@]}"
+    "${dev[@]}"
+    "${misc[@]}"
+  )
 
-# ── misc ───────────────────────────────
-misc=(
-  xdg-user-dirs
-  xdg-desktop-portal
-)
+  sudo pacman -S --needed --noconfirm "${packages[@]}"
+}
 
-# ── merge all arrays ───────────────────
-main_packages=(
-  "${system[@]}"
-  "${tool[@]}"
-  "${cli[@]}"
-  "${terminal[@]}"
-  "${audio[@]}"
-  "${fonts[@]}"
-  "${apps[@]}"
-  "${music[@]}"
-  "${files[@]}"
-  "${dev[@]}"
-  "${misc[@]}"
-)
+install_aur_packages
+
+if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
+  install_main_packages
+fi
