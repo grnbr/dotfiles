@@ -1,17 +1,23 @@
 #!/bin/bash
 set -e
 
-ROOT_DIR="$(git -C "$(dirname "${BASH_SOURCE[0]}")" rev-parse --show-toplevel 2>/dev/null)" || {
-  echo "ERROR: not inside a git repo"
-  exit 1
+configure_hyprland() {
+  local extra_configs=(
+    hyprland
+    kitty
+    gtk-3.0
+    gtk-4.0
+    environment.d
+    dunst
+    waybar
+    xdg-desktop-portal
+    rofi
+  )
+
+  echo "Apply main configs..."
+  apply_configs "${extra_configs[@]}"
 }
-SHARED_JOBS_DIR="$ROOT_DIR/src/setups/shared/jobs"
 
-extra_configs=(
-  kitty
-  hypr
-)
-
-echo "Apply main configs..."
-source "$SHARED_JOBS_DIR/apply-configs.sh"
-apply_configs "${extra_configs[@]}"
+if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
+  configure_hyprland
+fi
