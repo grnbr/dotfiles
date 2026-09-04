@@ -11,6 +11,7 @@ install_main_packages() {
     tar
     bluez
     bluez-tools
+    sing-box
   )
 
   local cli=(
@@ -28,6 +29,8 @@ install_main_packages() {
     openbsd-netcat
     rsync
     informant
+    7zip
+    fd
   )
 
   local apps=(
@@ -35,6 +38,7 @@ install_main_packages() {
     mpv
     thunar
     tumbler
+    neovim
     ffmpegthumbnailer
     chromium
     qutebrowser

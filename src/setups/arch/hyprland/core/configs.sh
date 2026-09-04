@@ -3,7 +3,7 @@ set -e
 
 configure_hyprland() {
   local extra_configs=(
-    hyprland
+    hypr
     kitty
     gtk-3.0
     gtk-4.0

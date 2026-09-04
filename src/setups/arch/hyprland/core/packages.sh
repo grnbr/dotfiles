@@ -38,6 +38,7 @@ install_hyprland_packages() {
   )
 
   local cli=(
+    wl-clipboard
   )
 
   local utils=(
