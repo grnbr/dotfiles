@@ -31,6 +31,7 @@ install_main_packages() {
     informant
     7zip
     fd
+    man
   )
 
   local apps=(
@@ -44,6 +45,8 @@ install_main_packages() {
     qutebrowser
     gimp
     steam
+    telegram-desktop
+    discord
   )
 
   local music=(
