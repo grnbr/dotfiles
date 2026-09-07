@@ -32,6 +32,7 @@ install_main_packages() {
     7zip
     fd
     man
+    ripgrep
   )
 
   local apps=(
