@@ -50,7 +50,7 @@ local menu        = "rofi -show drun"
 -- Or execute your favorite apps at launch like this:
 --
 hl.on("hyprland.start", function()
-  hl.exec_cmd("waybar")
+  hl.exec_cmd("waybar & hyprpaper")
   --   hl.exec_cmd(terminal)
   --   hl.exec_cmd("nm-applet")
   --   hl.exec_cmd("waybar & hyprpaper & firefox")
@@ -213,8 +213,8 @@ hl.config({
 
 hl.config({
   misc = {
-    force_default_wallpaper = -1,    -- Set to 0 or 1 to disable the anime mascot wallpapers
-    disable_hyprland_logo   = false, -- If true disables the random hyprland logo / anime girl background. :(
+    force_default_wallpaper = 0,    -- Set to 0 or 1 to disable the anime mascot wallpapers
+    disable_hyprland_logo   = true, -- If true disables the random hyprland logo / anime girl background. :(
   },
 })
 
@@ -265,14 +265,14 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
-local closeWindowBind = hl.bind(mainMod .. " + C", hl.dsp.window.close())
+local closeWindowBind = hl.bind(mainMod .. " + W", hl.dsp.window.close())
 -- closeWindowBind:set_enabled(false)
 hl.bind(mainMod .. " + M",
   hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
+hl.bind(mainMod .. " + SHIFT + T", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
 
 -- Move focus with mainMod + arrow keys
@@ -318,6 +318,14 @@ hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
 hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
+
+-- Pomodoro
+-- hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("waybar-module-pomodoro toggle"))
+-- hl.bind(mainMod .. " + CTRL + P", hl.dsp.exec_cmd("waybar-module-pomodoro reset"))
+hl.bind("SUPER + P", hl.dsp.exec_cmd("~/.config/hypr/scripts/focustimer-toggle.sh"))
+hl.bind("SUPER + CTRL + P",
+  hl.dsp.exec_cmd(
+    "gdbus call --session --dest io.github.focustimerhq.FocusTimer --object-path /io/github/focustimerhq/FocusTimer --method io.github.focustimerhq.FocusTimer.Timer.Reset"))
 
 
 --------------------------------

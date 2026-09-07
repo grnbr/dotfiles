@@ -15,7 +15,7 @@
         "sway/window"
     ],
     "modules-right": [
-        "custom/pomodoro",
+        // "custom/pomodoro",
         "idle_inhibitor",
         "pulseaudio",
         "network",

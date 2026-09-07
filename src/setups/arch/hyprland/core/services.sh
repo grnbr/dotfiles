@@ -6,6 +6,7 @@ enable_services() {
     NetworkManager
     bluetooth
     sshd
+    sing-box
   )
 
   echo "Enabling services..."

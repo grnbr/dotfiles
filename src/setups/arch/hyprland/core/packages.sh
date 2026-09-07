@@ -10,6 +10,7 @@ install_hyprland_packages() {
     hyprlock
     hypridle
     hyprpolkitagent
+
     xdg-desktop-portal
     xdg-desktop-portal-hyprland
     xdg-desktop-portal-gtk
@@ -19,7 +20,6 @@ install_hyprland_packages() {
     qt6-wayland
     adwaita-icon-theme
     adwaita-cursors
-    sddm
     polkit
   )
 
