@@ -3,7 +3,7 @@ set -e
 
 setup_greeter() {
   local session_command="start-hyprland"
-  local config="/etc/greetd/config1.toml"
+  local config="/etc/greetd/config.toml"
   local packages=(greetd greetd-tuigreet)
 
   sudo pacman -S --noconfirm --needed "${packages[@]}"

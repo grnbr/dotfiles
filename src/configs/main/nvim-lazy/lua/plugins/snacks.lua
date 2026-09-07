@@ -1,6 +1,8 @@
 return {
   "folke/snacks.nvim",
   opts = {
+    scroll = { enabled = false },
+
     terminal = {
       win = {
         style = "terminal",
@@ -10,6 +12,5 @@ return {
       },
       auto_insert = false,
     },
-    scroll = { enabled = false },
   },
 }

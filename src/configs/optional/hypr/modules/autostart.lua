@@ -1,0 +1,12 @@
+local programs = require("modules.programs")
+
+hl.on("hyprland.start", function()
+  hl.exec_cmd("waybar & hyprpaper")
+  hl.exec_cmd("nm-applet")
+  hl.exec_cmd(programs.terminal, { workspace = "2 silent" })
+  hl.exec_cmd("firefox", { workspace = "3 silent" })
+  hl.exec_cmd("brave --incognito", { workspace = "1 silent" })
+  hl.exec_cmd("Telegram", { workspace = "8 silent" })
+  hl.exec_cmd("discord", { workspace = "8 silent" })
+  hl.dispatch(hl.dsp.focus({ workspace = "2" }))
+end)
