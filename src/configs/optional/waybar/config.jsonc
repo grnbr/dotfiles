@@ -9,13 +9,14 @@
     "modules-left": [
         "sway/workspaces",
         "sway/mode",
-        "sway/scratchpad"
+        "sway/scratchpad",
+        "custom/media"
     ],
     "modules-center": [
         "sway/window"
     ],
     "modules-right": [
-        // "custom/pomodoro",
+        "mpd",
         "idle_inhibitor",
         "pulseaudio",
         "network",
@@ -24,10 +25,13 @@
         "memory",
         "temperature",
         "backlight",
+        "keyboard-state",
         "sway/language",
         "battery",
+        "battery#bat2",
         "clock",
-        "tray"
+        "tray",
+        "custom/power"
     ],
     // Modules configuration
     // "sway/workspaces": {
@@ -129,7 +133,7 @@
     "backlight": {
         // "device": "acpi_video1",
         "format": "{percent}% {icon}",
-        "format-icons": ["🌑", "🌘", "🌗", "🌖", "🌕"]
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
     "battery": {
         "states": {
@@ -212,7 +216,7 @@
 			"hibernate": "systemctl hibernate"
 		}
     },
-    "custom/pomodoro": {
+      "custom/pomodoro": {
       "format": "{}",
       "return-type": "json",
       "exec": "waybar-module-pomodoro -w 20 -s 1 -l 5 -i 2 --persist --autob",
