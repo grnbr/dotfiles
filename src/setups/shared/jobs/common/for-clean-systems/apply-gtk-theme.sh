@@ -10,10 +10,17 @@ apply_gtk_theme() {
     warn "org.gnome.desktop.interface schema not found (gsettings-desktop-schemas missing?), skipping"
     return 0
   fi
-  gsettings set org.gnome.desktop.interface gtk-theme "Adwaita"
+
+  if [[ -d /usr/share/themes/adw-gtk3 ]]; then
+    gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3"
+  else
+    gsettings set org.gnome.desktop.interface gtk-theme "Adwaita"
+  fi
+
   gsettings set org.gnome.desktop.interface icon-theme "Adwaita"
   gsettings set org.gnome.desktop.interface font-name "Inter 10"
   gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
+  gsettings set org.gnome.desktop.interface accent-color green
 }
 
 if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then

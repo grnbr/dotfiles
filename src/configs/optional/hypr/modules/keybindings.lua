@@ -2,10 +2,83 @@ local programs = require("modules.programs")
 
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
+hl.bind(mainMod .. " + ALT + Escape", hl.dsp.exec_cmd("hyprlock"))
+
+hl.bind(mainMod .. "+ M", function()
+  local layouts   = { "dwindle", "monocle" }
+  local workspace = hl.get_active_workspace()
+
+  if hl.get_active_special_workspace() then
+    workspace = hl.get_active_special_workspace()
+  end
+
+  if not workspace then
+    return
+  end
+
+  local next_layout = "dwindle"
+
+  for i = 1, #layouts do
+    if layouts[i] == workspace.tiled_layout then
+      next_layout = layouts[(i % #layouts) + 1]
+      break
+    end
+  end
+
+  if workspace.special then
+    hl.workspace_rule({
+      workspace = tostring(workspace.name),
+      layout = next_layout,
+    })
+  else
+    hl.workspace_rule({
+      workspace = tostring(workspace.id),
+      layout = next_layout,
+    })
+  end
+end)
+
+
+hl.bind("ALT + Tab", function()
+  local workspace = hl.get_active_workspace()
+
+  if not workspace then
+    return
+  end
+
+  if workspace.tiled_layout == "monocle" then
+    hl.dispatch(hl.dsp.layout("cyclenext"))
+  else
+    hl.dispatch(hl.dsp.window.cycle_next({ tiled = true }))
+    hl.dispatch(hl.dsp.window.bring_to_top())
+  end
+end)
+
+hl.bind("ALT + SHIFT + Tab", function()
+  local workspace = hl.get_active_workspace()
+
+  if not workspace then
+    return
+  end
+
+  if workspace.tiled_layout == "monocle" then
+    hl.dispatch(hl.dsp.layout("cycleprev"))
+  else
+    -- No cycle_prev() window dispatcher, so use cycle_next.
+    hl.dispatch(hl.dsp.window.cycle_next({ tiled = true }))
+    hl.dispatch(hl.dsp.window.bring_to_top())
+  end
+end)
+
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({
+  mode = "fullscreen",
+  action = "toggle",
+}))
+
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(programs.terminal))
 hl.bind(mainMod .. " + W", hl.dsp.window.close())
-hl.bind(mainMod .. " + M",
+hl.bind(mainMod .. " + ALT + Q",
   hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(programs.fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
@@ -26,6 +99,7 @@ for i = 1, 10 do
   hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
   hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
+hl.bind(mainMod .. " + TAB", hl.dsp.focus({ workspace = "prev" }))
 
 -- Example special workspace (scratchpad)
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))

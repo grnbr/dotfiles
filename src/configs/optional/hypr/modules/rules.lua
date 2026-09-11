@@ -16,6 +16,16 @@
 --     rounding    = 0,
 -- })
 
+hl.workspace_rule({
+  workspace = "1",
+  layout = "monocle",
+})
+
+hl.workspace_rule({
+  workspace = "10",
+  layout = "monocle",
+})
+
 local suppressMaximizeRule = hl.window_rule({
   -- Ignore maximize requests from all apps. You'll probably like this.
   name           = "suppress-maximize-events",

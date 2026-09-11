@@ -18,6 +18,7 @@ install_hyprland_packages() {
     gtk4
     qt5-wayland
     qt6-wayland
+    adw-gtk-theme
     adwaita-icon-theme
     adwaita-cursors
     polkit

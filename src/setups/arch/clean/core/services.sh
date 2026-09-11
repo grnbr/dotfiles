@@ -7,7 +7,7 @@ enable_services() {
     bluetooth
     sshd
     sing-box
-    hyprpolkitagent
+    hyprpolkitagent.service
   )
 
   echo "Enabling services..."
