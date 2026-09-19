@@ -21,6 +21,7 @@ apply_gtk_theme() {
   gsettings set org.gnome.desktop.interface font-name "Inter 10"
   gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"
   gsettings set org.gnome.desktop.interface accent-color green
+  gsettings set org.gnome.desktop.privacy remember-recent-files false
 }
 
 if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then

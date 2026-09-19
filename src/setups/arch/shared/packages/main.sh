@@ -5,13 +5,21 @@ install_main_packages() {
   echo "==> Installing main packages..."
 
   local system=(
-    git
-    python-pip
-
+    xdg-desktop-portal
+    xdg-desktop-portal-gtk
+    polkit
     tar
     bluez
     bluez-tools
     sing-box
+  )
+
+  local theme=(
+    gtk3
+    gtk4
+    adw-gtk-theme
+    adwaita-icon-theme
+    adwaita-cursors
   )
 
   local cli=(
@@ -28,11 +36,15 @@ install_main_packages() {
     less
     openbsd-netcat
     rsync
-    informant
     7zip
     fd
     man
     ripgrep
+    jq
+    zoxide
+    yazi
+    htop
+    # informant
   )
 
   local apps=(
@@ -48,6 +60,8 @@ install_main_packages() {
     steam
     telegram-desktop
     discord
+    bitwarden
+    guvcview
   )
 
   local music=(
@@ -57,6 +71,8 @@ install_main_packages() {
   )
 
   local dev=(
+    git
+    python-pip
     nodejs
     npm
     pnpm
@@ -87,6 +103,7 @@ install_main_packages() {
 
   local packages=(
     "${system[@]}"
+    "${theme[@]}"
     "${cli[@]}"
     "${music[@]}"
     "${apps[@]}"

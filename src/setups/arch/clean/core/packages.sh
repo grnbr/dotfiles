@@ -1,27 +1,11 @@
 #!/bin/bash
 set -e
 
-install_hyprland_packages() {
+install_packages() {
   echo "==> Installing Hyprland packages..."
 
   local system=(
-    hyprland
-    hyprpaper
-    hyprlock
-    hypridle
-    hyprpolkitagent
 
-    xdg-desktop-portal
-    xdg-desktop-portal-hyprland
-    xdg-desktop-portal-gtk
-    gtk3
-    gtk4
-    qt5-wayland
-    qt6-wayland
-    adw-gtk-theme
-    adwaita-icon-theme
-    adwaita-cursors
-    polkit
   )
 
   local apps=(
@@ -38,16 +22,9 @@ install_hyprland_packages() {
     network-manager-applet
   )
 
-  local cli=(
-    wl-clipboard
-  )
-
   local utils=(
     dunst
-    waybar
     rofi
-    grim
-    slurp
   )
 
   local audio=(
@@ -58,7 +35,6 @@ install_hyprland_packages() {
   local packages=(
     "${system[@]}"
     "${apps[@]}"
-    "${cli[@]}"
     "${utils[@]}"
     "${audio[@]}"
   )
@@ -67,5 +43,5 @@ install_hyprland_packages() {
 }
 
 if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
-  install_hyprland_packages
+  install_packages
 fi

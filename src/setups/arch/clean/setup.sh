@@ -37,19 +37,19 @@ source "$ROOT_DIR/src/setups/arch/shared/packages/main.sh"
 install_main_packages
 
 source "$CURRENT_DIR/core/packages.sh"
-install_hyprland_packages
+install_packages
 
 source "$CURRENT_DIR/core/aur.sh"
 install_aur_packages
 
 source "$SHARED_JOBS_DIR/apply-configs.sh"
-source "$SHARED_JOBS_DIR/apply-systemd.sh"
 source "$CURRENT_DIR/core/configs.sh"
-configure_hyprland
+configure
 
 source "$CURRENT_DIR/core/services.sh"
 enable_services
 
+source "$SHARED_JOBS_DIR/apply-systemd.sh"
 source "$CURRENT_DIR/core/user-services.sh"
 enable_user_services
 

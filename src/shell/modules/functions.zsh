@@ -12,7 +12,7 @@ lst() {
     ls -lhtA "$dir" | head -n "$lines"
 }
 
- calc() { echo "$*" | bc -l; }
+clc() { echo "$*" | bc -l; }
 
 pwdc() {
     if [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
@@ -20,4 +20,8 @@ pwdc() {
     else
         pwd | xclip -selection clipboard
     fi
+}
+
+thu() {
+    thunar "${1:-.}" &!
 }

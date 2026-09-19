@@ -15,6 +15,7 @@ x-scheme-handler/jetbrains=jetbrainsd.desktop
 image/jpeg=org.gnome.Loupe.desktop
 image/png=org.gnome.Loupe.desktop
 inode/directory=org.gnome.Nautilus.desktop
+application/x-subrip=nvim.desktop
 
 [Added Associations]
 application/json=nvim.desktop;
@@ -29,3 +30,4 @@ video/vnd.avi=mpv.desktop;
 x-content/image-dcf=org.gnome.gThumb.Import.desktop;
 image/jpeg=org.gnome.Loupe.desktop;
 image/png=org.gnome.Loupe.desktop;
+application/x-subrip=dev.zed.Zed.desktop;nvim.desktop;
