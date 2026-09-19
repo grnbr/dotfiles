@@ -9,7 +9,6 @@ plugins=(
   git 
   zsh-autosuggestions 
   zsh-syntax-highlighting 
-  z 
   fzf
 )
 
@@ -31,4 +30,5 @@ if [[ -f /etc/os-release ]]; then
 fi
 
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
 . "$HOME/.deno/env"

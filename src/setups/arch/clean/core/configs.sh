@@ -1,15 +1,13 @@
 #!/bin/bash
 set -e
 
-configure_hyprland() {
+configure() {
   local extra_configs=(
-    hypr
     kitty
     gtk-3.0
     gtk-4.0
     environment.d
     dunst
-    waybar
     xdg-desktop-portal
     rofi
   )
@@ -19,5 +17,5 @@ configure_hyprland() {
 }
 
 if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
-  configure_hyprland
+  configure
 fi

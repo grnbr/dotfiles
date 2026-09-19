@@ -1,6 +1,13 @@
 #!/bin/bash
 set -e
 
+if [[ $# -ne 1 || ! "$1" =~ ^(install|uninstall)$ ]]; then
+  echo "Usage: $0 {install|uninstall}"
+  exit 1
+fi
+
+readonly ACTION="$1"
+
 readonly CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 ROOT_DIR="$(git -C "$CURRENT_DIR" rev-parse --show-toplevel 2>/dev/null)" || {
@@ -22,36 +29,36 @@ export SHARED_JOBS_DIR
 source "$UTILS_DIR/keep-sudo.sh"
 source "$UTILS_DIR/warn.sh"
 source "$UTILS_DIR/output-result.sh"
-source "$CURRENT_DIR/bootstrap/mirrors.sh"
 
 keep_sudo
 output_result
 
-bootstrap_mirrors
-
-echo "Updating system..."
-sudo sed -i '/\[multilib\]/,/Include/'s/^#//'' /etc/pacman.conf
-sudo pacman -Syu --noconfirm
-
-source "$ROOT_DIR/src/setups/arch/shared/packages/main.sh"
-install_main_packages
+case "$ACTION" in
+install)
+  echo "Updating system..."
+  sudo sed -i '/\[multilib\]/,/Include/'s/^#//'' /etc/pacman.conf
+  sudo pacman -Syu --noconfirm
+  ;;
+esac
 
 source "$CURRENT_DIR/core/packages.sh"
-install_packages
+dwm_packages "$ACTION"
 
-source "$CURRENT_DIR/core/aur.sh"
-install_aur_packages
+source "$ROOT_DIR/src/setups/arch/shared/packages/x11.sh"
+x11_packages "$ACTION"
 
-source "$SHARED_JOBS_DIR/apply-configs.sh"
+# source "$CURRENT_DIR/core/aur.sh"
+# install_aur_packages
+
 source "$CURRENT_DIR/core/configs.sh"
-configure
-
-source "$CURRENT_DIR/core/services.sh"
-enable_services
+configure_dwm "$ACTION"
 
 source "$SHARED_JOBS_DIR/apply-systemd.sh"
+# source "$CURRENT_DIR/core/services.sh"
+# enable_services
+
 source "$CURRENT_DIR/core/user-services.sh"
-enable_user_services
+user_services "$ACTION"
 
 JOBS_DIR="$CURRENT_DIR/jobs"
 for job in "$JOBS_DIR"/*.sh; do

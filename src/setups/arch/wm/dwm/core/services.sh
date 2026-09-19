@@ -3,10 +3,7 @@ set -e
 
 enable_services() {
   services=(
-    NetworkManager
-    bluetooth
-    sshd
-    sing-box
+
   )
 
   echo "Enabling services..."

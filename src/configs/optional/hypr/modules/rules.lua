@@ -82,3 +82,16 @@ hl.window_rule({
   float = true,
   pin = true,
 })
+
+hl.window_rule({
+  match = {
+    class = "^floating-terminal$",
+  },
+  float = true,
+  center = true,
+  size = { "monitor_w * 0.7", "monitor_h * 0.7" },
+})
+
+-- windowrulev2 = float, class:^(floating-terminal)$
+-- windowrulev2 = size 30% 30%, class:^(floating-terminal)$
+-- windowrulev2 = center, class:^(floating-terminal)$

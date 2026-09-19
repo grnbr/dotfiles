@@ -2,6 +2,8 @@
 
 Things to install manually after running setup.sh:
 
+## Install sudo pacman -S informant
+
 ## mpc update
 
 ## Waybar:
