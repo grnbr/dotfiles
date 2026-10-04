@@ -14,7 +14,6 @@
 -- Create your files separately and then require them like this:
 -- require("myColors")
 
-
 require("modules.monitors")
 require("modules.autostart")
 require("modules.settings")
@@ -24,6 +23,7 @@ require("modules.misc")
 require("modules.input")
 require("modules.keybindings")
 require("modules.rules")
+require("modules.env")
 
 -----------------------
 ----- PERMISSIONS -----

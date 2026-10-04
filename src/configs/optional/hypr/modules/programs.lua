@@ -1,5 +1,7 @@
+local terminal = "kitty"
+
 return {
-  terminal = "kitty",
-  fileManager = "thunar",
-  menu = "rofi -show drun",
+	terminal = terminal,
+	fileManager = terminal .. " -- yazi",
+	menu = "rofi -show drun",
 }

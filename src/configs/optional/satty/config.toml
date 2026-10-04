@@ -1,0 +1,8 @@
+[general]
+fullscreen = false
+resize = { mode = "smart" }
+floating-hack = true
+copy-command = "wl-copy"
+early-exit = ["all"]
+actions-on-escape = ["save-to-clipboard", "exit"]
+

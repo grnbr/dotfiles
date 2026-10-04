@@ -10,8 +10,6 @@ install_packages() {
 
   local apps=(
     firefox
-    nautilus
-    evince
     gnome-calculator
     gnome-sound-recorder
     rhythmbox

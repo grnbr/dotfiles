@@ -1,0 +1,61 @@
+# ─────────────────────────────────────────────
+# Everforest Dark
+# ─────────────────────────────────────────────
+
+# UI
+set default-bg                  "#2D353B"
+set default-fg                  "#D3C6AA"
+
+set statusbar-bg                "#232A2E"
+set statusbar-fg                "#D3C6AA"
+
+set inputbar-bg                 "#232A2E"
+set inputbar-fg                 "#A7C080"
+
+set notification-bg             "#3D484D"
+set notification-fg             "#D3C6AA"
+
+set notification-error-bg       "#543A48"
+set notification-error-fg       "#E67E80"
+
+set notification-warning-bg     "#514045"
+set notification-warning-fg     "#DBBC7F"
+
+# Completion menu
+set completion-bg               "#2D353B"
+set completion-fg               "#D3C6AA"
+set completion-group-bg         "#232A2E"
+set completion-group-fg         "#859289"
+set completion-highlight-bg     "#A7C080"
+set completion-highlight-fg     "#2D353B"
+
+# Index
+set index-bg                    "#2D353B"
+set index-fg                    "#D3C6AA"
+set index-active-bg             "#A7C080"
+set index-active-fg             "#2D353B"
+
+# Highlights
+set highlight-color             "rgba(167,192,128,0.5)"
+set highlight-active-color      "rgba(219,188,127,0.6)"
+set highlight-fg                "rgba(45,53,59,0.8)"
+
+# Font
+set font "monospace normal 10"
+
+# UI elements
+set guioptions "s"
+
+# ─────────────────────────────────────────────
+# PDF recoloring
+# ─────────────────────────────────────────────
+
+set recolor true
+set recolor-lightcolor "#D3C6AA"
+set recolor-darkcolor "#2D353B"
+set recolor-keephue false
+set recolor-reverse-video false
+
+
+set selection-clipboard clipboard
+map C exec "sh -c '$HOME/.local/bin/zathura-copy \"$FILE\"'"
