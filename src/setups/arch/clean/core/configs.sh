@@ -10,6 +10,7 @@ configure() {
     dunst
     xdg-desktop-portal
     rofi
+    zathura
   )
 
   echo "Apply main configs..."

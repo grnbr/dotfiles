@@ -102,6 +102,13 @@ vim.keymap.set("n", "<A-w>", function()
   Snacks.bufdelete()
 end, { desc = "Close Buffer" })
 
+-- Swap LazyVim's buffer deletion mappings
+vim.keymap.set("n", "<leader>bd", "<cmd>bd<cr>", { desc = "Delete Buffer and Window" })
+
+vim.keymap.set("n", "<leader>bD", function()
+  Snacks.bufdelete()
+end, { desc = "Delete Buffer" })
+
 -- Windows and Tabs control
 local keys = { "q", "w", "e", "r" }
 
@@ -121,6 +128,20 @@ for i, key in ipairs(keys) do
     end
   end, { desc = "Focus tab " .. i })
 end
+
+-- Testing
+vim.keymap.set("n", "<leader>tg", function()
+  vim.cmd("split | terminal go test ./...")
+end, { desc = "Go test" })
+vim.keymap.set("n", "<leader>tp", function()
+  vim.cmd("split | terminal pytest")
+end, { desc = "Pytest" })
+vim.keymap.set("n", "<leader>tj", function()
+  vim.cmd("split | terminal npm test")
+end, { desc = "Jest" })
+vim.keymap.set("n", "<leader>tv", function()
+  vim.cmd("split | terminal npx vitest")
+end, { desc = "Vitest" })
 
 vim.keymap.set("n", "<leader><tab>c", "<cmd>tabclose<cr>", { desc = "Close tab" })
 

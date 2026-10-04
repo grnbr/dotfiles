@@ -1,0 +1,10 @@
+#!/bin/sh
+
+type=$(wl-paste --list-types | grep '^image/' | head -n1)
+
+if [ -z "$type" ]; then
+    notify-send "Satty" "No image in clipboard"
+    exit 1
+fi
+
+wl-paste --type "$type" | satty --filename -

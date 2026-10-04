@@ -25,6 +25,7 @@ configure_hyprland() {
   local configs=(
     optional/hypr
     optional/waybar
+    optional/satty
   )
 
   case "$action" in

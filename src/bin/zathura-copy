@@ -1,0 +1,8 @@
+#!/bin/sh
+text=$(wl-paste --no-newline)
+book=$(basename "$1")
+book=${book%.*}
+case "$text" in
+  *"— $book") exit 0 ;;
+esac
+printf '%s — %s' "$text" "$book" | wl-copy

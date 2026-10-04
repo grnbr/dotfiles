@@ -16,6 +16,7 @@ wayland_packages() {
     waybar
     grim
     slurp
+    satty
   )
 
   local packages=(

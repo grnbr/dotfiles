@@ -12,6 +12,8 @@ install_main_packages() {
     bluez
     bluez-tools
     sing-box
+    udisks2
+    udiskie
   )
 
   local theme=(
@@ -37,6 +39,7 @@ install_main_packages() {
     openbsd-netcat
     rsync
     7zip
+    unzip
     fd
     man
     ripgrep
@@ -44,6 +47,7 @@ install_main_packages() {
     zoxide
     yazi
     htop
+    bind
     # informant
   )
 
@@ -62,6 +66,10 @@ install_main_packages() {
     discord
     bitwarden
     guvcview
+    imv
+    calibre
+    zathura
+    zathura-pdf-mupdf
   )
 
   local music=(
@@ -73,15 +81,18 @@ install_main_packages() {
   local dev=(
     git
     python-pip
+    python-pipx
     nodejs
     npm
     pnpm
+    deno
     postgresql
     ffmpeg
     iperf3
     perl-image-exiftool
     rust
     go
+    golangci-lint
   )
 
   local terminal=(

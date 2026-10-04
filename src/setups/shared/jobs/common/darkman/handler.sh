@@ -29,9 +29,8 @@ main() {
   case "$1" in
   dark)
     if [[ -d /usr/share/themes/adw-gtk3-dark ]]; then
-      gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3"
+      gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-dark"
     fi
-    gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
     set_wallpaper "$wallpaper_dir/dark.jpg"
     ;;
@@ -39,7 +38,6 @@ main() {
     if [[ -d /usr/share/themes/adw-gtk3 ]]; then
       gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3"
     fi
-    gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3'
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
     set_wallpaper "$wallpaper_dir/light.jpg"
     ;;

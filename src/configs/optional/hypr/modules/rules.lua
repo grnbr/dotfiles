@@ -17,37 +17,37 @@
 -- })
 
 hl.workspace_rule({
-  workspace = "1",
-  layout = "monocle",
+	workspace = "1",
+	layout = "monocle",
 })
 
 hl.workspace_rule({
-  workspace = "10",
-  layout = "monocle",
+	workspace = "10",
+	layout = "monocle",
 })
 
 local suppressMaximizeRule = hl.window_rule({
-  -- Ignore maximize requests from all apps. You'll probably like this.
-  name           = "suppress-maximize-events",
-  match          = { class = ".*" },
+	-- Ignore maximize requests from all apps. You'll probably like this.
+	name = "suppress-maximize-events",
+	match = { class = ".*" },
 
-  suppress_event = "maximize",
+	suppress_event = "maximize",
 })
 -- suppressMaximizeRule:set_enabled(false)
 
 hl.window_rule({
-  -- Fix some dragging issues with XWayland
-  name     = "fix-xwayland-drags",
-  match    = {
-    class      = "^$",
-    title      = "^$",
-    xwayland   = true,
-    float      = true,
-    fullscreen = false,
-    pin        = false,
-  },
+	-- Fix some dragging issues with XWayland
+	name = "fix-xwayland-drags",
+	match = {
+		class = "^$",
+		title = "^$",
+		xwayland = true,
+		float = true,
+		fullscreen = false,
+		pin = false,
+	},
 
-  no_focus = true,
+	no_focus = true,
 })
 
 -- Layer rules also return a handle.
@@ -60,36 +60,51 @@ hl.window_rule({
 
 -- Hyprland-run windowrule
 hl.window_rule({
-  name  = "move-hyprland-run",
-  match = { class = "hyprland-run" },
+	name = "move-hyprland-run",
+	match = { class = "hyprland-run" },
 
-  move  = "20 monitor_h-120",
-  float = true,
+	move = "20 monitor_h-120",
+	float = true,
 })
 
 hl.window_rule({
-  match = {
-    class = "org.telegram.desktop|discord",
-  },
-  workspace = "8",
-  no_initial_focus = true
+	match = {
+		class = "org.telegram.desktop|discord",
+	},
+	workspace = "8",
+	no_initial_focus = true,
 })
 
 hl.window_rule({
-  match = {
-    class = "xyz.safeworlds.hiit",
-  },
-  float = true,
-  pin = true,
+	match = {
+		class = "org.telegram.desktop",
+		title = "Media viewer",
+	},
+	float = true,
+	size = { "monitor_w * 0.7", "monitor_h * 0.7" },
+	fullscreen = false,
+	-- focus_on_activate = true,
+	-- stay_focused = true,
+	no_initial_focus = false,
 })
 
 hl.window_rule({
-  match = {
-    class = "^floating-terminal$",
-  },
-  float = true,
-  center = true,
-  size = { "monitor_w * 0.7", "monitor_h * 0.7" },
+	match = {
+		class = "xyz.safeworlds.hiit",
+	},
+	float = true,
+	pin = true,
+})
+
+hl.window_rule({
+	match = {
+		class = "^floating-terminal$|com.gabm.satty|Bitwarden",
+	},
+	float = true,
+	center = true,
+	size = { "monitor_w * 0.7", "monitor_h * 0.7" },
+	-- opacity = "1.0 override 0.4 override",
+	-- no_blur = true
 })
 
 -- windowrulev2 = float, class:^(floating-terminal)$
