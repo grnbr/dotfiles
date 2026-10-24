@@ -11,8 +11,9 @@ alias raudio='systemctl --user restart pipewire pipewire-pulse wireplumber'
 alias mt7='sudo mkdir -p /mnt/external/t7 && sudo mount -t ext4 /dev/disk/by-id/usb-Samsung_PSSD_T7_Touch_S5KENJ0TB00202E-0:0-part1 /mnt/external/t7 && echo "T7 Touch safely mounted."'
 alias ut7='sudo umount /dev/disk/by-id/usb-Samsung_PSSD_T7_Touch_S5KENJ0TB00202E-0:0-part1 && sync && sudo udisksctl power-off -b /dev/disk/by-id/usb-Samsung_PSSD_T7_Touch_S5KENJ0TB00202E-0:0 && echo "T7 Touch safely removed."'
 
-alias ten="trans :ru"
-alias tensh="trans -shell :ru"
+tp='-player "mpv --no-config --no-video --vo=null --volume=50"'
+alias ten="trans -sp $tp :ru"
+alias tensh="trans -sp -shell $tp :ru"
 alias тру="trans ru:en"
 alias brin='setsid brave-browser --incognito >/dev/null 2>&1 &'
 alias frin='setsid firefox --private-window >/dev/null 2>&1 &'
@@ -26,3 +27,4 @@ alias prvzsh='HISTFILE=/dev/null HISTSIZE=0 SAVEHIST=0 zsh'
 alias gcl="wl-copy < /mnt/linuxdisk/my-stuff/programming/jobs/cover-letter.txt"
 alias gclen="wl-copy < /mnt/linuxdisk/my-stuff/programming/jobs/cover-letter-en.txt"
 alias opfls='~/.bin/open_folders.sh'
+alias cpsmryph='wl-copy -n "Give me a copy-pasteable summary of everything we'\''ve done so far that I can use to restore context in a new chat"'

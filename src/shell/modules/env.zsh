@@ -1,4 +1,5 @@
 export PATH=$HOME/.bin:$HOME/.local/bin:/usr/local/bin:$HOME/go/bin:$PATH
+export PATH="$HOME/.config/emacs/bin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 export EDITOR=nvim
 export VISUAL=nvim

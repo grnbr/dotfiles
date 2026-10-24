@@ -6,10 +6,10 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 -- ── System ────────────────────────────────────────────────
 hl.bind(
-	mainMod .. " + ALT + ESCAPE",
+	mainMod .. " + ALT + SHIFT + ESCAPE",
 	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
 )
-hl.bind(mainMod .. " + ALT + Escape", hl.dsp.exec_cmd("hyprlock"))
+hl.bind(mainMod .. " + ALT + Escape", hl.dsp.exec_cmd("loginctl lock-session"))
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind(
@@ -69,48 +69,12 @@ bind_directions(nil, function(direction)
 end)
 
 -- ── Move window
-bind_directions("SHIFT", function(direction)
+bind_directions("SHIFT + ALT", function(direction)
 	return hl.dsp.window.move({ direction = direction })
 end)
 
 -- ── Swap window
-bind_directions("ALT + SHIFT", function(direction)
-	return hl.dsp.window.swap({ direction = direction })
-end)
-
-local directions = {
-	left = { "left", "h" },
-	down = { "down", "j" },
-	up = { "up", "k" },
-	right = { "right", "l" },
-}
-
-local function bind_directions(modifier, dispatcher)
-	for direction, keys in pairs(directions) do
-		for _, key in ipairs(keys) do
-			local prefix = mainMod
-
-			if modifier then
-				prefix = prefix .. " + " .. modifier
-			end
-
-			hl.bind(prefix .. " + " .. key, dispatcher(direction))
-		end
-	end
-end
-
--- ── Focus
-bind_directions(nil, function(direction)
-	return hl.dsp.focus({ direction = direction })
-end)
-
--- ── Move window
 bind_directions("SHIFT", function(direction)
-	return hl.dsp.window.move({ direction = direction })
-end)
-
--- ── Swap window
-bind_directions("ALT + SHIFT", function(direction)
 	return hl.dsp.window.swap({ direction = direction })
 end)
 
@@ -146,6 +110,13 @@ hl.bind(
 	mainMod .. " + F",
 	hl.dsp.window.fullscreen({
 		mode = "fullscreen",
+		action = "toggle",
+	})
+)
+hl.bind(
+	mainMod .. " + SHIFT + F",
+	hl.dsp.window.fullscreen({
+		mode = "maximized",
 		action = "toggle",
 	})
 )
@@ -272,7 +243,7 @@ hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("~/.config/hypr/scripts/focustimer-to
 hl.bind(
 	mainMod .. " + CTRL + P",
 	hl.dsp.exec_cmd(
-		"gdbus call --session --dest io.github.focustimerhq.FocusTimer --object-path /io/github/focustimerhq/FocusTimer --method io.github.focustimerhq.FocusTimer.Timer.Reset"
+		"gdbus call --session --dest io.github.focustimerhq.FocusTimer --object-path /io/github/focustimerhq/FocusTimer --method io.github.focustimerhq.FocusTimer.Timer.Reset && notify-send -t 3000 'Timer reset!'"
 	)
 )
 

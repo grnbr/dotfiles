@@ -66,7 +66,7 @@ install_main_packages() {
     discord
     bitwarden
     guvcview
-    imv
+    swayimg
     calibre
     zathura
     zathura-pdf-mupdf

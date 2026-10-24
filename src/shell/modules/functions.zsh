@@ -15,7 +15,7 @@ lst() {
 clc() { echo "$*" | bc -l; }
 
 pwdc() {
-    if [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
+  if [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
         pwd | wl-copy
     else
         pwd | xclip -selection clipboard
