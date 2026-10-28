@@ -1,0 +1,14 @@
+# GIMP gimp-smudge-tool options
+
+(foreground
+    (color "HSVA float" 16 "\0\0\0\0\0\0\200\77\317\316N\77\0\0\200\77" 0))
+(brush "2. Hardness 050")
+(dynamics "Pressure Size")
+(pattern "Pine")
+(gradient "FG to BG (RGB)")
+(palette "Color History")
+(brush-size 28)
+(brush-aspect-ratio 2.7755575615628914e-17)
+(brush-hardness 0.5)
+
+# end of gimp-smudge-tool options

@@ -53,7 +53,7 @@ set guioptions "s"
 set recolor true
 set recolor-lightcolor "#D3C6AA"
 set recolor-darkcolor "#2D353B"
-set recolor-keephue false
+set recolor-keephue true
 set recolor-reverse-video false
 
 

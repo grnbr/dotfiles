@@ -249,7 +249,7 @@ hl.bind(
 
 -- Screenshot
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd('grim -g "$(slurp)" -t ppm - | satty --filename -'))
-
+hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd('grim -g "$(slurp)" - | tesseract - - -l eng+rus | wl-copy'))
 hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("grim -t ppm - | satty --filename -"))
 
 -- Edit clipboard

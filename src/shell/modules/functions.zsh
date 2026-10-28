@@ -26,3 +26,26 @@ thu() {
     thunar "${1:-.}" &!
 }
 
+cutvid() {
+  if [[ $# -lt 3 ]]; then
+    echo "usage: cutvid <input> <start> <end> [output]" >&2
+    return 1
+  fi
+
+  local in="$1" start="$2" end="$3" out="$4"
+
+  if [[ -z "$out" ]]; then
+    local base="${in%.*}_cut" ext="${in##*.}"
+    out="$base.$ext"
+    local n=1
+    while [[ -e "$out" ]]; do
+      out="$base($n).$ext"
+      ((n++))
+    done
+  fi
+
+  ffmpeg -n -i "$in" -ss "$start" -to "$end" \
+    -map 0:v -map "0:a?" \
+    -c:v libx264 -crf 18 -preset fast \
+    -c:a copy "$out"
+}

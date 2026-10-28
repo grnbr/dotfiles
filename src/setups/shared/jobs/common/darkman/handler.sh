@@ -1,5 +1,22 @@
 #!/usr/bin/env bash
 
+if [[ -n "${XDG_RUNTIME_DIR:-}" && -d "$XDG_RUNTIME_DIR/hypr" ]]; then
+  HYPRLAND_INSTANCE_SIGNATURE="$(ls -t "$XDG_RUNTIME_DIR/hypr" | head -n1)"
+  export HYPRLAND_INSTANCE_SIGNATURE
+  export WAYLAND_DISPLAY="${WAYLAND_DISPLAY:-wayland-1}"
+fi
+
+find_wallpaper() {
+  local base="$1" ext
+  for ext in jpg jpeg png; do
+    if [[ -f "$base.$ext" ]]; then
+      echo "$base.$ext"
+      return 0
+    fi
+  done
+  return 1
+}
+
 set_wallpaper() {
   local wallpaper="$1"
 
@@ -32,14 +49,14 @@ main() {
       gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3-dark"
     fi
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-    set_wallpaper "$wallpaper_dir/dark.jpg"
+    set_wallpaper "$(find_wallpaper "$wallpaper_dir/dark")"
     ;;
   light)
     if [[ -d /usr/share/themes/adw-gtk3 ]]; then
       gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3"
     fi
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-light'
-    set_wallpaper "$wallpaper_dir/light.jpg"
+    set_wallpaper "$(find_wallpaper "$wallpaper_dir/light")"
     ;;
   esac
 }
