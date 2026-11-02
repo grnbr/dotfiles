@@ -1,6 +1,0 @@
-[Unit]
-Description=Clean up old files in downloads and tmp
-
-[Service]
-Type=oneshot
-ExecStart=%h/dotfiles/src/setups/shared/scripts/cleanup-old-files.sh

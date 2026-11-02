@@ -1,2 +1,2 @@
 ## TODO: 
-  - write Python tests and rewrite src/setups from **bash** to **Python**
+  - write Python tests and rewrite setups from **bash** to **Python**

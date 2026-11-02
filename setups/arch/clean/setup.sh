@@ -1,0 +1,70 @@
+#!/bin/bash
+set -e
+
+readonly CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+ROOT_DIR="$(git -C "$CURRENT_DIR" rev-parse --show-toplevel 2>/dev/null)" || {
+  echo "ERROR: not inside a git repo"
+  exit 1
+}
+readonly ROOT_DIR
+export ROOT_DIR
+
+readonly SHARED_DIR="$ROOT_DIR/setups/shared"
+export SHARED_DIR
+
+readonly UTILS_DIR="$SHARED_DIR/utils"
+export UTILS_DIR
+
+readonly SHARED_JOBS_DIR="$ROOT_DIR/setups/shared/jobs"
+export SHARED_JOBS_DIR
+
+source "$UTILS_DIR/keep-sudo.sh"
+source "$UTILS_DIR/warn.sh"
+source "$UTILS_DIR/output-result.sh"
+source "$CURRENT_DIR/bootstrap/mirrors.sh"
+
+keep_sudo
+output_result
+
+bootstrap_mirrors
+
+echo "Updating system..."
+sudo sed -i '/\[multilib\]/,/Include/'s/^#//'' /etc/pacman.conf
+sudo pacman -Syu --noconfirm
+
+source "$ROOT_DIR/setups/arch/shared/packages/main.sh"
+install_main_packages
+
+source "$CURRENT_DIR/core/packages.sh"
+install_packages
+
+source "$CURRENT_DIR/core/aur.sh"
+install_aur_packages
+
+source "$SHARED_JOBS_DIR/apply-configs.sh"
+source "$CURRENT_DIR/core/configs.sh"
+configure
+
+source "$CURRENT_DIR/core/services.sh"
+enable_services
+
+source "$SHARED_JOBS_DIR/apply-systemd.sh"
+source "$CURRENT_DIR/core/user-services.sh"
+enable_user_services
+
+JOBS_DIR="$CURRENT_DIR/jobs"
+for job in "$JOBS_DIR"/*.sh; do
+  [ -e "$job" ] || continue
+  echo "→ Running job $job"
+  bash "$job"
+done
+
+echo "All done! Reboot recommended."
+
+if [ -s $WARNINGS_LOG_PATH ]; then
+  echo ""
+  echo "=== Warnings ==="
+  cat "$WARNINGS_LOG_PATH"
+  rm "$WARNINGS_LOG_PATH"
+fi
