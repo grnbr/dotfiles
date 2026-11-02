@@ -27,12 +27,22 @@ thu() {
 }
 
 cutvid() {
-  if [[ $# -lt 3 ]]; then
-    echo "usage: cutvid <input> <start> <end> [output]" >&2
+  if [[ $# -lt 2 ]]; then
+    echo "usage: cutvid <input> [start] <end> [output]" >&2
+    echo "       cutvid <input> <end>            (start defaults to 00:00:00)" >&2
     return 1
   fi
 
-  local in="$1" start="$2" end="$3" out="$4"
+  local in="$1" start end out
+
+  if [[ $# -eq 2 ]]; then
+    start="00:00:00"
+    end="$2"
+  else
+    start="${2:-00:00:00}"   # empty string also falls back to the default
+    end="$3"
+    out="$4"
+  fi
 
   if [[ -z "$out" ]]; then
     local base="${in%.*}_cut" ext="${in##*.}"

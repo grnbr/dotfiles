@@ -83,4 +83,4 @@ x-scheme-handler/jetbrains=jetbrainsd.desktop
 
 [Added Associations]
 image/jpeg=org.gnome.Loupe.desktop;swayimg.desktop;gimp.desktop;
-image/png=swayimg.desktop;org.gnome.Loupe.desktop;gimp.desktop;
+image/png=org.gnome.Loupe.desktop;swayimg.desktop;gimp.desktop;

@@ -1,0 +1,17 @@
+# Yank files and put them on the system clipboard
+[[mgr.prepend_keymap]]
+on   = "y"
+run  = [ "yank", "plugin filecopy -- --action=copy" ]
+desc = "Yank selected files (copy)"
+
+# Cut
+[[mgr.prepend_keymap]]
+on   = "x"
+run  = [ "yank --cut", "plugin filecopy -- --action=copy" ]
+desc = "Yank selected files (cut)"
+
+# Paste files from the system clipboard into the current directory
+[[mgr.prepend_keymap]]
+on   = "<C-p>"
+run  = "plugin filecopy -- --action=paste"
+desc = "Paste files from system clipboard"
