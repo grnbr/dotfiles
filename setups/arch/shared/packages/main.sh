@@ -94,6 +94,7 @@ install_main_packages() {
     rust
     go
     golangci-lint
+    docker
   )
 
   local terminal=(
