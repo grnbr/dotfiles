@@ -3,5 +3,10 @@ use = "XYenon/clipboard"
 rev = "4b4b6c5"
 hash = "cdcc9c84c9757d585af78c87b012f38b"
 
+[[plugin.deps]]
+use = "boydaihungst/mediainfo"
+rev = "f1cec0b"
+hash = "fd9312e974c63438b1f8737711462d52"
+
 [flavor]
 deps = []

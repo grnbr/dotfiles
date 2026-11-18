@@ -2,7 +2,7 @@
 set -e
 
 install_packages() {
-  echo "==> Installing Hyprland packages..."
+  echo "==> Installing packages..."
 
   local system=(
 

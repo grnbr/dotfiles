@@ -4,6 +4,7 @@ local device = require("libs.device")
 local function setup_wallpaper()
 	hl.exec_cmd([[
     if command -v darkman >/dev/null 2>&1; then
+      dbus-update-activation-environment --systemd WAYLAND_DISPLAY HYPRLAND_INSTANCE_SIGNATURE XDG_CURRENT_DESKTOP
       systemctl --user start darkman
 
       until hyprctl hyprpaper listactive >/dev/null 2>&1; do
@@ -24,18 +25,22 @@ end
 
 -- Apps started on every machine
 local function start_common()
+	-- services
 	hl.exec_cmd("waybar")
 	hl.exec_cmd("hyprpaper")
 	start_hypridle()
 	setup_wallpaper()
-	hl.dispatch(hl.dsp.focus({ workspace = "2" }))
-	-- hl.exec_cmd(programs.terminal, { workspace = "2" })
+	hl.exec_cmd("nm-applet")
+	hl.exec_cmd("~/.config/hypr/scripts/focustimer-toggle.sh")
+
+	-- other apps, silent so they don't steal focus
+	hl.exec_cmd(programs.terminal, { workspace = "2 silent" })
 	hl.exec_cmd("firefox", { workspace = "3 silent" })
 	hl.exec_cmd("brave --incognito", { workspace = "1 silent" })
 	hl.exec_cmd("Telegram", { workspace = "8 silent" })
 	hl.exec_cmd("discord", { workspace = "8 silent" })
-	hl.exec_cmd("nm-applet")
-	hl.exec_cmd("~/.config/hypr/scripts/focustimer-toggle.sh")
+
+	hl.dispatch(hl.dsp.focus({ workspace = "10" }))
 end
 
 local function start_desktop()

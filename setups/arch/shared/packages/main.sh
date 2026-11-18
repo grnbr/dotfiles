@@ -9,6 +9,7 @@ install_main_packages() {
     xdg-desktop-portal-gtk
     polkit
     tar
+    unrar
     bluez
     bluez-tools
     sing-box
@@ -103,6 +104,7 @@ install_main_packages() {
     xdg-user-dirs
     darkman
     inotify-tools
+    mediainfo
   )
 
   local fonts=(

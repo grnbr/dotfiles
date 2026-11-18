@@ -249,8 +249,14 @@ hl.bind(
 
 -- Screenshot
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd('grim -g "$(slurp)" -t ppm - | satty --filename -'))
-hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd('grim -g "$(slurp)" - | tesseract - - -l eng+rus | wl-copy'))
+hl.bind(
+	mainMod .. " + SHIFT + C",
+	hl.dsp.exec_cmd(
+		'grim -g "$(slurp)" - | magick - -colorspace Gray -negate -resize 300% png:- | tesseract - - -l eng+rus --psm 6 | wl-copy'
+	)
+)
 hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("grim -t ppm - | satty --filename -"))
 
 -- Edit clipboard
 hl.bind(mainMod .. " + ALT + S", hl.dsp.exec_cmd("~/.local/bin/satty-edit-clipboard"))
+hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("hyprpicker -a -n -r"))

@@ -17,4 +17,7 @@ hl.config({
 		warp_on_change_workspace = 1,
 		inactive_timeout = 8,
 	},
+	render = {
+		cm_auto_hdr = 0,
+	},
 })

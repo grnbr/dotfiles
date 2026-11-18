@@ -9,6 +9,7 @@ hyprland_packages() {
     hyprpaper
     hyprlock
     hypridle
+    hyprpicker
     hyprpolkitagent
     xdg-desktop-portal-hyprland
 
