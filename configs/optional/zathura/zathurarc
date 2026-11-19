@@ -58,6 +58,10 @@ set recolor-reverse-video false
 
 
 set selection-clipboard clipboard
-map C exec "sh -c '$HOME/.local/bin/zathura-copy \"$FILE\"'"
+map C exec "sh -c '$HOME/.config/zathura/scripts/zathura-copy \"$FILE\"'"
 
 set statusbar-basename true
+set window-title-basename true
+
+map <PageDown> scroll half-down
+map <PageUp> scroll half-up
