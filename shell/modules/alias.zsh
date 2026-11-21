@@ -8,7 +8,7 @@ alias free='free -h'
 alias rmconfbak='rm -rf ~/.config.bak*'
 alias raudio='systemctl --user restart pipewire pipewire-pulse wireplumber'
 
-alias mt7='sudo mkdir -p /mnt/external/t7 && sudo mount -t ext4 /dev/disk/by-id/usb-Samsung_PSSD_T7_Touch_S5KENJ0TB00202E-0:0-part1 /mnt/external/t7 && echo "T7 Touch safely mounted."'
+alias mt7='sudo mkdir -p /mnt/store && sudo mount -t ext4 /dev/disk/by-id/usb-Samsung_PSSD_T7_Touch_S5KENJ0TB00202E-0:0-part1 /mnt/store && echo "T7 Touch safely mounted."'
 alias ut7='sudo umount /dev/disk/by-id/usb-Samsung_PSSD_T7_Touch_S5KENJ0TB00202E-0:0-part1 && sync && sudo udisksctl power-off -b /dev/disk/by-id/usb-Samsung_PSSD_T7_Touch_S5KENJ0TB00202E-0:0 && echo "T7 Touch safely removed."'
 
 tp='-player "mpv --no-config --no-video --vo=null --volume=50"'
