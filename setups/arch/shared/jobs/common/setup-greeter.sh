@@ -11,6 +11,9 @@ setup_greeter() {
   sudo sed -i \
     "s|^[[:space:]]*command[[:space:]]*=.*|command = \"tuigreet --time --remember --cmd $session_command\"|" \
     "$config"
+  sudo sed -i \
+    's|^[[:space:]]*vt[[:space:]]*=.*|vt = "next"|' \
+    "$config"
 
   sudo systemctl enable greetd
 }
