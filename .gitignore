@@ -9,3 +9,5 @@ configs/main/qutebrowser/quickmarks
 configs/main/qutebrowser/greasemonkey/hidden-elements.js
 
 configs/optional/gtk-3.0/bookmarks
+
+__pycache__/

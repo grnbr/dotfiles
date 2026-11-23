@@ -1,0 +1,112 @@
+import logging
+import subprocess
+
+logger = logging.getLogger(__name__)
+
+PACKAGES = {
+    "system": [
+        "xdg-desktop-portal",
+        "xdg-desktop-portal-gtk",
+        "polkit",
+        "tar",
+        "unrar",
+        "bluez",
+        "bluez-tools",
+        "sing-box",
+        "udisks2",
+        "udiskie",
+    ],
+    "theme": [
+        "gtk3",
+        "gtk4",
+        "adw-gtk-theme",
+        "adwaita-icon-theme",
+        "adwaita-cursors",
+    ],
+    "cli": [
+        "tree",
+        "fzf",
+        "zsh",
+        "fastfetch",
+        "yt-dlp",
+        "gdu",
+        "bc",
+        "task",
+        "translate-shell",
+        "dictd",
+        "less",
+        "openbsd-netcat",
+        "rsync",
+        "7zip",
+        "unzip",
+        "fd",
+        "man",
+        "ripgrep",
+        "jq",
+        "zoxide",
+        "yazi",
+        "htop",
+        "bind",
+        # "informant",
+    ],
+    "apps": [
+        "qbittorrent",
+        "mpv",
+        "thunar",
+        "tumbler",
+        "neovim",
+        "ffmpegthumbnailer",
+        "chromium",
+        "qutebrowser",
+        "gimp",
+        "steam",
+        "telegram-desktop",
+        "discord",
+        "bitwarden",
+        "guvcview",
+        "swayimg",
+        "calibre",
+        "zathura",
+        "zathura-pdf-mupdf",
+    ],
+    "music": ["mpd", "mpc", "ncmpcpp"],
+    "dev": [
+        "git",
+        "python-pip",
+        "python-pipx",
+        "nodejs",
+        "npm",
+        "pnpm",
+        "deno",
+        "postgresql",
+        "ffmpeg",
+        "iperf3",
+        "perl-image-exiftool",
+        "rust",
+        "go",
+        "golangci-lint",
+        "docker",
+    ],
+    "terminal": ["kitty"],
+    "misc": [
+        "xdg-user-dirs",
+        "darkman",
+        "inotify-tools",
+        "mediainfo",
+    ],
+    "fonts": [
+        "inter-font",
+        "noto-fonts",
+        "noto-fonts-emoji",
+        "ttf-jetbrains-mono-nerd",
+    ],
+}
+
+
+def install_main_packages() -> None:
+    logger.info("==> Installing main packages...")
+    packages = [pkg for group in PACKAGES.values() for pkg in group]
+    subprocess.run(
+        ["sudo", "pacman", "-S", "--needed", "--noconfirm", *packages],
+        check=True,
+    )

@@ -1,6 +1,6 @@
 FROM archlinux
 
-RUN pacman -Syu --noconfirm sudo python uv \
+RUN pacman -Syu --noconfirm sudo python \
     && useradd -m tester \
     && echo "tester ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/tester
 
