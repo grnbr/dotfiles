@@ -254,9 +254,16 @@ hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd('grim -g "$(slurp)" -t ppm - 
 hl.bind(
 	mainMod .. " + SHIFT + C",
 	hl.dsp.exec_cmd(
+		'grim -g "$(slurp)" - | magick - -colorspace Gray -negate -resize 300% png:- | tesseract - - -l eng --psm 6 | wl-copy'
+	)
+)
+hl.bind(
+	mainMod .. " + SHIFT + V",
+	hl.dsp.exec_cmd(
 		'grim -g "$(slurp)" - | magick - -colorspace Gray -negate -resize 300% png:- | tesseract - - -l eng+rus --psm 6 | wl-copy'
 	)
 )
+
 hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("grim -t ppm - | satty --filename -"))
 
 -- Edit clipboard
