@@ -2,6 +2,7 @@
 sort_by = "mtime"
 sort_reverse = true
 ratio = [1, 3, 5]   # parent : current : preview columns
+linemode = "size"
 
 [preview]
 max_width  = 3840
