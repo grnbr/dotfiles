@@ -1,0 +1,18 @@
+We are moving this work to a new chat. Write a handoff summary I can paste as my first message.
+
+Use these exact headers:
+
+1. Goal: what we are trying to achieve (one sentence)
+2. Key decisions: [decision] → [reason], including failed approaches to avoid
+3. Constraints & preferences: rules, tone, format, response length, technical limits
+4. Current state: what is done, plus the latest version of any code or draft
+5. Open questions: unresolved items, or "None"
+6. Next step: the exact next action
+
+Rules:
+- Max 400 words
+- Keep specifics: names, numbers, file paths, exact terms
+- Cut pleasantries and tangents
+- No commentary
+
+Put everything inside one code block and write nothing outside it.

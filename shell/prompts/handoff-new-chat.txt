@@ -1,0 +1,7 @@
+I'm continuing a project from a previous chat. The summary below is the source of truth.
+
+Don't restart or re-frame. Keep all decisions and preferences. If something critical is missing, ask first.
+
+Reply with: 1) the goal in one line, 2) the next action you understand, 3) any gaps (or "None"). Then wait for me.
+
+Summary:

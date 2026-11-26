@@ -27,4 +27,6 @@ alias prvzsh='HISTFILE=/dev/null HISTSIZE=0 SAVEHIST=0 zsh'
 alias gcl="wl-copy < /mnt/linuxdisk/my-stuff/programming/jobs/cover-letter.txt"
 alias gclen="wl-copy < /mnt/linuxdisk/my-stuff/programming/jobs/cover-letter-en.txt"
 alias opfls='~/.bin/open_folders.sh'
-alias smrzctx='wl-copy -n "Give me a copy-pasteable summary of everything we'\''ve done so far that I can use to restore context in a new chat"'
+
+alias smrzctx='wl-copy -n < ~/dotfiles/shell/prompts/handoff-old-chat.txt'
+alias pstctx='wl-copy -n < ~/dotfiles/shell/prompts/handoff-new-chat.txt'
