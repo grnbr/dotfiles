@@ -46,3 +46,37 @@ def _remove(target: Path) -> None:
         target.unlink()
     elif target.is_dir():
         shutil.rmtree(target)
+
+
+SKIPPED_MAIN = {"systemd"}
+
+
+def apply_configs(*optional_names: str) -> None:
+    for name in _main_config_names():
+        apply_config(f"main/{name}")
+
+    for name in optional_names:
+        apply_config(f"optional/{name}")
+
+
+def _main_config_names() -> list[str]:
+    return sorted(
+        item.name
+        for item in (CONFIGS_DIR / "main").iterdir()
+        if item.name not in SKIPPED_MAIN
+    )
+
+
+def unlink_config(config_name: str) -> None:
+    source = CONFIGS_DIR / config_name
+    target = DEST_DIR / source.name
+
+    if not target.is_symlink():
+        logger.warning("SKIP: %s is not a symlink", target)
+        return
+
+    if target.resolve() != source.resolve():
+        logger.warning("SKIP: %s points somewhere else", target)
+        return
+
+    target.unlink()

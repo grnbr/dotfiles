@@ -2,9 +2,11 @@ import logging
 import subprocess
 
 from setups_py.arch.base.jobs.bootstrap_mirrors import bootstrap_mirrors
+from setups_py.arch.base.jobs.configure import configure
 from setups_py.arch.base.jobs.enable_multilib import enable_multilib
 from setups_py.arch.base.jobs.install_aur_packages import install_aur_packages
 from setups_py.arch.base.jobs.install_packages import install_packages
+from setups_py.arch.base.jobs.setup_systemd import setup_systemd
 from setups_py.arch.shared.packages.install_main_packages import install_main_packages
 from setups_py.shared.utils.keep_sudo import keep_sudo
 from setups_py.shared.utils.setup_logging import setup_logging
@@ -23,6 +25,9 @@ def main() -> None:
     install_packages()
 
     install_aur_packages()
+
+    configure()
+    setup_systemd()
 
     print("Setup finished ฅ^•ﻌ•^ฅ")
 

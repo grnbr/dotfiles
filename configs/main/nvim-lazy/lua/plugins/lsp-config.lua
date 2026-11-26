@@ -21,6 +21,13 @@ return {
       css_variables = {
         filetypes = { "css", "scss" }, -- remove scss/sass/less
       },
+      pyright = {
+        capabilities = {
+          workspace = {
+            didChangeWatchedFiles = { dynamicRegistration = true },
+          },
+        },
+      },
     },
     -- setup = {
     --   eslint = function()
