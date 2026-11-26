@@ -106,6 +106,12 @@ hl.window_rule({
 	-- opacity = "1.0 override 0.4 override",
 	-- no_blur = true
 })
+
+hl.window_rule({
+	name = "zathura-opaque",
+	match = { class = "^org\\.pwmt\\.zathura$" },
+	opacity = "1.0 override 1.0 override",
+})
 -- windowrulev2 = float, class:^(floating-terminal)$
 -- windowrulev2 = size 30% 30%, class:^(floating-terminal)$
 -- windowrulev2 = center, class:^(floating-terminal)$
