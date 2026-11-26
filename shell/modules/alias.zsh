@@ -28,5 +28,5 @@ alias gcl="wl-copy < /mnt/linuxdisk/my-stuff/programming/jobs/cover-letter.txt"
 alias gclen="wl-copy < /mnt/linuxdisk/my-stuff/programming/jobs/cover-letter-en.txt"
 alias opfls='~/.bin/open_folders.sh'
 
-alias smrzctx='wl-copy -n < ~/dotfiles/shell/prompts/handoff-old-chat.txt'
+alias smrzctx='wl-copy -n < ~/dotfiles/shell /prompts/handoff-old-chat.txt'
 alias pstctx='wl-copy -n < ~/dotfiles/shell/prompts/handoff-new-chat.txt'
